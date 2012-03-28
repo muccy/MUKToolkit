@@ -34,6 +34,7 @@
 		065793E115233E1000D6762A /* MUK+String.h in Headers */ = {isa = PBXBuildFile; fileRef = 065793DF15233E1000D6762A /* MUK+String.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		065793E215233E1000D6762A /* MUK+String.m in Sources */ = {isa = PBXBuildFile; fileRef = 065793E015233E1000D6762A /* MUK+String.m */; };
 		065793EE1523431100D6762A /* MUKToolkitBaseTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 065793ED1523431100D6762A /* MUKToolkitBaseTests.m */; };
+		065793F11523476B00D6762A /* MUKToolkitStringTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 065793F01523476B00D6762A /* MUKToolkitStringTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,8 @@
 		065793E015233E1000D6762A /* MUK+String.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MUK+String.m"; sourceTree = "<group>"; };
 		065793EC1523431100D6762A /* MUKToolkitBaseTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUKToolkitBaseTests.h; sourceTree = "<group>"; };
 		065793ED1523431100D6762A /* MUKToolkitBaseTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUKToolkitBaseTests.m; sourceTree = "<group>"; };
+		065793EF1523476B00D6762A /* MUKToolkitStringTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUKToolkitStringTests.h; sourceTree = "<group>"; };
+		065793F01523476B00D6762A /* MUKToolkitStringTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUKToolkitStringTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +166,8 @@
 		065793E4152342A800D6762A /* String */ = {
 			isa = PBXGroup;
 			children = (
+				065793EF1523476B00D6762A /* MUKToolkitStringTests.h */,
+				065793F01523476B00D6762A /* MUKToolkitStringTests.m */,
 			);
 			path = String;
 			sourceTree = "<group>";
@@ -311,6 +316,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				065793EE1523431100D6762A /* MUKToolkitBaseTests.m in Sources */,
+				065793F11523476B00D6762A /* MUKToolkitStringTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -412,6 +418,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MUKToolkit/MUKToolkit-Prefix.pch";
 				INFOPLIST_FILE = "MUKToolkit/Unit Tests/MUKToolkitTests-Info.plist";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = octest;
 			};
@@ -427,6 +434,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MUKToolkit/MUKToolkit-Prefix.pch";
 				INFOPLIST_FILE = "MUKToolkit/Unit Tests/MUKToolkitTests-Info.plist";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = octest;
 			};
