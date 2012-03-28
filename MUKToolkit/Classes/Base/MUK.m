@@ -27,4 +27,8 @@
 
 @implementation MUK
 
++ (BOOL)bitmask:(int)bitmask containsFlag:(int)flag {
+    return ((bitmask & flag) == flag);
+}
+
 @end

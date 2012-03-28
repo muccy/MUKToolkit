@@ -23,25 +23,19 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#import <Foundation/Foundation.h>
+#import "MUKToolkitBaseTests.h"
+#import "MUK.h"
 
-/**
- `MUK` is not a class you need to instantiate: it is only the namespace where
- toolkit methods live.
- 
- This toolkit do not want to *pollute* system namespaces with categories, but
- exposes a set of class methods.
- */
-@interface MUK : NSObject
-@end
+@implementation MUKToolkitBaseTests
 
+- (void)testBitmaskFlag {
+    int flag = (1<<2);
+    int bitmask = (1<<5 | 1<<0);
+    
+    STAssertFalse([MUK bitmask:bitmask containsFlag:flag], @"%i not contained in %i", flag, bitmask);
+    
+    bitmask = (bitmask | flag);
+    STAssertTrue([MUK bitmask:bitmask containsFlag:flag], @"%i contained in %i", flag, bitmask);
+}
 
-@interface MUK (Generic)
-/**
- Discover if a value is flagged into bitmask.
- @param bitmask The bitmask where flag is searched.
- @param flag The value searched in the bitmask.
- @return YES if flag bit is found into bitmask.
- */
-+ (BOOL)bitmask:(int)bitmask containsFlag:(int)flag;
 @end

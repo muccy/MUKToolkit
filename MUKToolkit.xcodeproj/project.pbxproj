@@ -6,6 +6,20 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		065793D515233DB000D6762A /* MUKToolkitDocumentation */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 065793D815233DB000D6762A /* Build configuration list for PBXAggregateTarget "MUKToolkitDocumentation" */;
+			buildPhases = (
+				065793DD15233DC100D6762A /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = MUKToolkitDocumentation;
+			productName = MUKToolkitDocumentation;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		0657938B1523337F00D6762A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0657938A1523337F00D6762A /* Foundation.framework */; };
 		065793991523337F00D6762A /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 065793981523337F00D6762A /* SenTestingKit.framework */; };
@@ -15,9 +29,11 @@
 		065793BC1523342500D6762A /* MUKToolkit-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 065793BA1523342500D6762A /* MUKToolkit-Prefix.pch */; };
 		065793BD1523342500D6762A /* MUKToolkit.h in Headers */ = {isa = PBXBuildFile; fileRef = 065793BB1523342500D6762A /* MUKToolkit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		065793C71523345400D6762A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 065793C21523345400D6762A /* InfoPlist.strings */; };
-		065793C91523345400D6762A /* MUKToolkitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 065793C61523345400D6762A /* MUKToolkitTests.m */; };
 		065793CD1523360F00D6762A /* MUK.h in Headers */ = {isa = PBXBuildFile; fileRef = 065793CB1523360F00D6762A /* MUK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		065793CE1523360F00D6762A /* MUK.m in Sources */ = {isa = PBXBuildFile; fileRef = 065793CC1523360F00D6762A /* MUK.m */; };
+		065793E115233E1000D6762A /* MUK+String.h in Headers */ = {isa = PBXBuildFile; fileRef = 065793DF15233E1000D6762A /* MUK+String.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		065793E215233E1000D6762A /* MUK+String.m in Sources */ = {isa = PBXBuildFile; fileRef = 065793E015233E1000D6762A /* MUK+String.m */; };
+		065793EE1523431100D6762A /* MUKToolkitBaseTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 065793ED1523431100D6762A /* MUKToolkitBaseTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,10 +57,12 @@
 		065793BB1523342500D6762A /* MUKToolkit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MUKToolkit.h; path = MUKToolkit/MUKToolkit.h; sourceTree = "<group>"; };
 		065793C31523345400D6762A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		065793C41523345400D6762A /* MUKToolkitTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "MUKToolkitTests-Info.plist"; sourceTree = "<group>"; };
-		065793C51523345400D6762A /* MUKToolkitTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUKToolkitTests.h; sourceTree = "<group>"; };
-		065793C61523345400D6762A /* MUKToolkitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUKToolkitTests.m; sourceTree = "<group>"; };
 		065793CB1523360F00D6762A /* MUK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUK.h; sourceTree = "<group>"; };
 		065793CC1523360F00D6762A /* MUK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUK.m; sourceTree = "<group>"; };
+		065793DF15233E1000D6762A /* MUK+String.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MUK+String.h"; sourceTree = "<group>"; };
+		065793E015233E1000D6762A /* MUK+String.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MUK+String.m"; sourceTree = "<group>"; };
+		065793EC1523431100D6762A /* MUKToolkitBaseTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUKToolkitBaseTests.h; sourceTree = "<group>"; };
+		065793ED1523431100D6762A /* MUKToolkitBaseTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUKToolkitBaseTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				065793CA152335D400D6762A /* Base */,
+				065793DE15233DFA00D6762A /* String */,
 			);
 			name = Classes;
 			path = MUKToolkit/Classes;
@@ -114,10 +133,10 @@
 		065793C11523345400D6762A /* Unit Tests */ = {
 			isa = PBXGroup;
 			children = (
+				065793EB1523431100D6762A /* Base */,
+				065793E4152342A800D6762A /* String */,
 				065793C21523345400D6762A /* InfoPlist.strings */,
 				065793C41523345400D6762A /* MUKToolkitTests-Info.plist */,
-				065793C51523345400D6762A /* MUKToolkitTests.h */,
-				065793C61523345400D6762A /* MUKToolkitTests.m */,
 			);
 			name = "Unit Tests";
 			path = "MUKToolkit/Unit Tests";
@@ -132,6 +151,31 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
+		065793DE15233DFA00D6762A /* String */ = {
+			isa = PBXGroup;
+			children = (
+				065793DF15233E1000D6762A /* MUK+String.h */,
+				065793E015233E1000D6762A /* MUK+String.m */,
+			);
+			path = String;
+			sourceTree = "<group>";
+		};
+		065793E4152342A800D6762A /* String */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = String;
+			sourceTree = "<group>";
+		};
+		065793EB1523431100D6762A /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				065793EC1523431100D6762A /* MUKToolkitBaseTests.h */,
+				065793ED1523431100D6762A /* MUKToolkitBaseTests.m */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -142,6 +186,7 @@
 				065793BC1523342500D6762A /* MUKToolkit-Prefix.pch in Headers */,
 				065793BD1523342500D6762A /* MUKToolkit.h in Headers */,
 				065793CD1523360F00D6762A /* MUK.h in Headers */,
+				065793E115233E1000D6762A /* MUK+String.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,6 +251,7 @@
 			targets = (
 				065793861523337F00D6762A /* MUKToolkit */,
 				065793961523337F00D6762A /* MUKToolkitTests */,
+				065793D515233DB000D6762A /* MUKToolkitDocumentation */,
 			);
 		};
 /* End PBXProject section */
@@ -235,6 +281,19 @@
 			shellPath = /bin/sh;
 			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
 		};
+		065793DD15233DC100D6762A /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/appledoc \\\n--project-name \"MUKToolkit\" \\\n--project-company \"MeLive\" \\\n--company-id \"it.melive\" \\\n--output \"Documentation\" \\\n--logformat xcode \\\n--keep-undocumented-objects \\\n--keep-undocumented-members \\\n--no-repeat-first-par \\\n--no-warn-invalid-crossref \\\n--ignore \"*.m\" \\\n--ignore \"Unit Tests\" \\\n--ignore \"Example\" \\\n--exit-threshold 2 \\\n\"${PROJECT_DIR}\"";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -243,6 +302,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				065793CE1523360F00D6762A /* MUK.m in Sources */,
+				065793E215233E1000D6762A /* MUK+String.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,7 +310,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				065793C91523345400D6762A /* MUKToolkitTests.m in Sources */,
+				065793EE1523431100D6762A /* MUKToolkitBaseTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -372,6 +432,20 @@
 			};
 			name = Release;
 		};
+		065793D615233DB000D6762A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		065793D715233DB000D6762A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -401,6 +475,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		065793D815233DB000D6762A /* Build configuration list for PBXAggregateTarget "MUKToolkitDocumentation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				065793D615233DB000D6762A /* Debug */,
+				065793D715233DB000D6762A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
