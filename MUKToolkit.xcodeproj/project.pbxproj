@@ -35,6 +35,9 @@
 		065793E215233E1000D6762A /* MUK+String.m in Sources */ = {isa = PBXBuildFile; fileRef = 065793E015233E1000D6762A /* MUK+String.m */; };
 		065793EE1523431100D6762A /* MUKToolkitBaseTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 065793ED1523431100D6762A /* MUKToolkitBaseTests.m */; };
 		065793F11523476B00D6762A /* MUKToolkitStringTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 065793F01523476B00D6762A /* MUKToolkitStringTests.m */; };
+		065793F5152466EA00D6762A /* MUK+Date.h in Headers */ = {isa = PBXBuildFile; fileRef = 065793F3152466EA00D6762A /* MUK+Date.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		065793F6152466EA00D6762A /* MUK+Date.m in Sources */ = {isa = PBXBuildFile; fileRef = 065793F4152466EA00D6762A /* MUK+Date.m */; };
+		065793FA1524674100D6762A /* MUKToolkitDateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 065793F91524674100D6762A /* MUKToolkitDateTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +69,10 @@
 		065793ED1523431100D6762A /* MUKToolkitBaseTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUKToolkitBaseTests.m; sourceTree = "<group>"; };
 		065793EF1523476B00D6762A /* MUKToolkitStringTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUKToolkitStringTests.h; sourceTree = "<group>"; };
 		065793F01523476B00D6762A /* MUKToolkitStringTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUKToolkitStringTests.m; sourceTree = "<group>"; };
+		065793F3152466EA00D6762A /* MUK+Date.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MUK+Date.h"; sourceTree = "<group>"; };
+		065793F4152466EA00D6762A /* MUK+Date.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MUK+Date.m"; sourceTree = "<group>"; };
+		065793F81524674100D6762A /* MUKToolkitDateTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUKToolkitDateTests.h; sourceTree = "<group>"; };
+		065793F91524674100D6762A /* MUKToolkitDateTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUKToolkitDateTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				065793CA152335D400D6762A /* Base */,
+				065793F2152466DD00D6762A /* Date */,
 				065793DE15233DFA00D6762A /* String */,
 			);
 			name = Classes;
@@ -137,6 +145,7 @@
 			isa = PBXGroup;
 			children = (
 				065793EB1523431100D6762A /* Base */,
+				065793F71524672C00D6762A /* Date */,
 				065793E4152342A800D6762A /* String */,
 				065793C21523345400D6762A /* InfoPlist.strings */,
 				065793C41523345400D6762A /* MUKToolkitTests-Info.plist */,
@@ -181,6 +190,24 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
+		065793F2152466DD00D6762A /* Date */ = {
+			isa = PBXGroup;
+			children = (
+				065793F3152466EA00D6762A /* MUK+Date.h */,
+				065793F4152466EA00D6762A /* MUK+Date.m */,
+			);
+			path = Date;
+			sourceTree = "<group>";
+		};
+		065793F71524672C00D6762A /* Date */ = {
+			isa = PBXGroup;
+			children = (
+				065793F81524674100D6762A /* MUKToolkitDateTests.h */,
+				065793F91524674100D6762A /* MUKToolkitDateTests.m */,
+			);
+			path = Date;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -192,6 +219,7 @@
 				065793BD1523342500D6762A /* MUKToolkit.h in Headers */,
 				065793CD1523360F00D6762A /* MUK.h in Headers */,
 				065793E115233E1000D6762A /* MUK+String.h in Headers */,
+				065793F5152466EA00D6762A /* MUK+Date.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,6 +336,7 @@
 			files = (
 				065793CE1523360F00D6762A /* MUK.m in Sources */,
 				065793E215233E1000D6762A /* MUK+String.m in Sources */,
+				065793F6152466EA00D6762A /* MUK+Date.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -317,6 +346,7 @@
 			files = (
 				065793EE1523431100D6762A /* MUKToolkitBaseTests.m in Sources */,
 				065793F11523476B00D6762A /* MUKToolkitStringTests.m in Sources */,
+				065793FA1524674100D6762A /* MUKToolkitDateTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
