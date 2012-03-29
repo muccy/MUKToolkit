@@ -29,8 +29,8 @@
 @implementation MUKToolkitBaseTests
 
 - (void)testBitmaskFlag {
-    int flag = (1<<2);
-    int bitmask = (1<<5 | 1<<0);
+    NSUInteger flag = (1<<2);
+    NSUInteger bitmask = (1<<5 | 1<<0);
     
     STAssertFalse([MUK bitmask:bitmask containsFlag:flag], @"%i not contained in %i", flag, bitmask);
     

@@ -27,7 +27,7 @@
 
 @implementation MUK
 
-+ (BOOL)bitmask:(int)bitmask containsFlag:(int)flag {
++ (BOOL)bitmask:(NSUInteger)bitmask containsFlag:(NSUInteger)flag {
     return ((bitmask & flag) == flag);
 }
 

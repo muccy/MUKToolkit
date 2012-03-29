@@ -43,5 +43,5 @@
  @param flag The value searched in the bitmask.
  @return YES if flag bit is found into bitmask.
  */
-+ (BOOL)bitmask:(int)bitmask containsFlag:(int)flag;
++ (BOOL)bitmask:(NSUInteger)bitmask containsFlag:(NSUInteger)flag;
 @end
