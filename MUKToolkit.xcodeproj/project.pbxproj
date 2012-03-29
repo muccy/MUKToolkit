@@ -38,6 +38,9 @@
 		065793F5152466EA00D6762A /* MUK+Date.h in Headers */ = {isa = PBXBuildFile; fileRef = 065793F3152466EA00D6762A /* MUK+Date.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		065793F6152466EA00D6762A /* MUK+Date.m in Sources */ = {isa = PBXBuildFile; fileRef = 065793F4152466EA00D6762A /* MUK+Date.m */; };
 		065793FA1524674100D6762A /* MUKToolkitDateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 065793F91524674100D6762A /* MUKToolkitDateTests.m */; };
+		065793FE1524EDEA00D6762A /* MUK+Array.h in Headers */ = {isa = PBXBuildFile; fileRef = 065793FC1524EDEA00D6762A /* MUK+Array.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		065793FF1524EDEA00D6762A /* MUK+Array.m in Sources */ = {isa = PBXBuildFile; fileRef = 065793FD1524EDEA00D6762A /* MUK+Array.m */; };
+		065794031524F0CE00D6762A /* MUKToolkitArrayTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 065794021524F0CE00D6762A /* MUKToolkitArrayTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +76,10 @@
 		065793F4152466EA00D6762A /* MUK+Date.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MUK+Date.m"; sourceTree = "<group>"; };
 		065793F81524674100D6762A /* MUKToolkitDateTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUKToolkitDateTests.h; sourceTree = "<group>"; };
 		065793F91524674100D6762A /* MUKToolkitDateTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUKToolkitDateTests.m; sourceTree = "<group>"; };
+		065793FC1524EDEA00D6762A /* MUK+Array.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MUK+Array.h"; sourceTree = "<group>"; };
+		065793FD1524EDEA00D6762A /* MUK+Array.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MUK+Array.m"; sourceTree = "<group>"; };
+		065794011524F0CE00D6762A /* MUKToolkitArrayTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUKToolkitArrayTests.h; sourceTree = "<group>"; };
+		065794021524F0CE00D6762A /* MUKToolkitArrayTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUKToolkitArrayTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +140,7 @@
 		065793B91523342500D6762A /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				065793FB1524EDD300D6762A /* Array */,
 				065793CA152335D400D6762A /* Base */,
 				065793F2152466DD00D6762A /* Date */,
 				065793DE15233DFA00D6762A /* String */,
@@ -144,6 +152,7 @@
 		065793C11523345400D6762A /* Unit Tests */ = {
 			isa = PBXGroup;
 			children = (
+				065794001524F0B800D6762A /* Array */,
 				065793EB1523431100D6762A /* Base */,
 				065793F71524672C00D6762A /* Date */,
 				065793E4152342A800D6762A /* String */,
@@ -208,6 +217,24 @@
 			path = Date;
 			sourceTree = "<group>";
 		};
+		065793FB1524EDD300D6762A /* Array */ = {
+			isa = PBXGroup;
+			children = (
+				065793FC1524EDEA00D6762A /* MUK+Array.h */,
+				065793FD1524EDEA00D6762A /* MUK+Array.m */,
+			);
+			path = Array;
+			sourceTree = "<group>";
+		};
+		065794001524F0B800D6762A /* Array */ = {
+			isa = PBXGroup;
+			children = (
+				065794011524F0CE00D6762A /* MUKToolkitArrayTests.h */,
+				065794021524F0CE00D6762A /* MUKToolkitArrayTests.m */,
+			);
+			path = Array;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -220,6 +247,7 @@
 				065793CD1523360F00D6762A /* MUK.h in Headers */,
 				065793E115233E1000D6762A /* MUK+String.h in Headers */,
 				065793F5152466EA00D6762A /* MUK+Date.h in Headers */,
+				065793FE1524EDEA00D6762A /* MUK+Array.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -337,6 +365,7 @@
 				065793CE1523360F00D6762A /* MUK.m in Sources */,
 				065793E215233E1000D6762A /* MUK+String.m in Sources */,
 				065793F6152466EA00D6762A /* MUK+Date.m in Sources */,
+				065793FF1524EDEA00D6762A /* MUK+Array.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,6 +376,7 @@
 				065793EE1523431100D6762A /* MUKToolkitBaseTests.m in Sources */,
 				065793F11523476B00D6762A /* MUKToolkitStringTests.m in Sources */,
 				065793FA1524674100D6762A /* MUKToolkitDateTests.m in Sources */,
+				065794031524F0CE00D6762A /* MUKToolkitArrayTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
