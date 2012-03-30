@@ -13,6 +13,7 @@ Requirements
 
 Installation
 ------------
+*Thanks to [jverkoey iOS Framework]*.
 
 #### Step 0: clone project from GitHub
 
@@ -97,5 +98,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
 
+[jverkoey iOS Framework]: https://github.com/jverkoey/iOS-Framework
 [appledoc]: https://github.com/tomaz/appledoc
     
