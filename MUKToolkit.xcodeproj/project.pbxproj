@@ -26,6 +26,9 @@
 		0610AD0915261C9D00705663 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0610AD0715261C9D00705663 /* CoreGraphics.framework */; };
 		0610AD0A15261C9D00705663 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0610AD0815261C9D00705663 /* UIKit.framework */; };
 		0610AD0C15261CA700705663 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0610AD0715261C9D00705663 /* CoreGraphics.framework */; };
+		0610AD5C1526274500705663 /* MUK+Geometry.h in Headers */ = {isa = PBXBuildFile; fileRef = 0610AD5A1526274500705663 /* MUK+Geometry.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0610AD5D1526274500705663 /* MUK+Geometry.m in Sources */ = {isa = PBXBuildFile; fileRef = 0610AD5B1526274500705663 /* MUK+Geometry.m */; };
+		0610AD621526277200705663 /* MUKToolkitGeometryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0610AD611526277200705663 /* MUKToolkitGeometryTests.m */; };
 		0657938B1523337F00D6762A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0657938A1523337F00D6762A /* Foundation.framework */; };
 		065793991523337F00D6762A /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 065793981523337F00D6762A /* SenTestingKit.framework */; };
 		0657939B1523337F00D6762A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0657939A1523337F00D6762A /* UIKit.framework */; };
@@ -63,6 +66,10 @@
 		0610AC961525D9DA00705663 /* MUK+URL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MUK+URL.m"; sourceTree = "<group>"; };
 		0610AD0715261C9D00705663 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		0610AD0815261C9D00705663 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		0610AD5A1526274500705663 /* MUK+Geometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MUK+Geometry.h"; sourceTree = "<group>"; };
+		0610AD5B1526274500705663 /* MUK+Geometry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MUK+Geometry.m"; sourceTree = "<group>"; };
+		0610AD601526277200705663 /* MUKToolkitGeometryTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUKToolkitGeometryTests.h; sourceTree = "<group>"; };
+		0610AD611526277200705663 /* MUKToolkitGeometryTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUKToolkitGeometryTests.m; sourceTree = "<group>"; };
 		065793871523337F00D6762A /* libMUKToolkit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMUKToolkit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		0657938A1523337F00D6762A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		065793971523337F00D6762A /* MUKToolkitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MUKToolkitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -126,6 +133,24 @@
 			path = URL;
 			sourceTree = "<group>";
 		};
+		0610AD591526274500705663 /* Geometry */ = {
+			isa = PBXGroup;
+			children = (
+				0610AD5A1526274500705663 /* MUK+Geometry.h */,
+				0610AD5B1526274500705663 /* MUK+Geometry.m */,
+			);
+			path = Geometry;
+			sourceTree = "<group>";
+		};
+		0610AD5F1526277200705663 /* Geometry */ = {
+			isa = PBXGroup;
+			children = (
+				0610AD601526277200705663 /* MUKToolkitGeometryTests.h */,
+				0610AD611526277200705663 /* MUKToolkitGeometryTests.m */,
+			);
+			path = Geometry;
+			sourceTree = "<group>";
+		};
 		0657937C1523337F00D6762A = {
 			isa = PBXGroup;
 			children = (
@@ -166,6 +191,7 @@
 				065793FB1524EDD300D6762A /* Array */,
 				065793CA152335D400D6762A /* Base */,
 				065793F2152466DD00D6762A /* Date */,
+				0610AD591526274500705663 /* Geometry */,
 				065793DE15233DFA00D6762A /* String */,
 				0610AC931525D9C500705663 /* URL */,
 			);
@@ -179,6 +205,7 @@
 				065794001524F0B800D6762A /* Array */,
 				065793EB1523431100D6762A /* Base */,
 				065793F71524672C00D6762A /* Date */,
+				0610AD5F1526277200705663 /* Geometry */,
 				065793E4152342A800D6762A /* String */,
 				065793C21523345400D6762A /* InfoPlist.strings */,
 				065793C41523345400D6762A /* MUKToolkitTests-Info.plist */,
@@ -273,6 +300,7 @@
 				065793F5152466EA00D6762A /* MUK+Date.h in Headers */,
 				065793FE1524EDEA00D6762A /* MUK+Array.h in Headers */,
 				0610AC971525D9DA00705663 /* MUK+URL.h in Headers */,
+				0610AD5C1526274500705663 /* MUK+Geometry.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -407,6 +435,7 @@
 				065793F6152466EA00D6762A /* MUK+Date.m in Sources */,
 				065793FF1524EDEA00D6762A /* MUK+Array.m in Sources */,
 				0610AC981525D9DA00705663 /* MUK+URL.m in Sources */,
+				0610AD5D1526274500705663 /* MUK+Geometry.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -418,6 +447,7 @@
 				065793F11523476B00D6762A /* MUKToolkitStringTests.m in Sources */,
 				065793FA1524674100D6762A /* MUKToolkitDateTests.m in Sources */,
 				065794031524F0CE00D6762A /* MUKToolkitArrayTests.m in Sources */,
+				0610AD621526277200705663 /* MUKToolkitGeometryTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
