@@ -52,7 +52,8 @@
  `panda@2x.png`, `name` will be `panda`.
  @param extension Extension of image. If you have an image file called 
  `panda@2x.png`, `extension` will be `png`. If `nil` extension is 
- calculated from `name`.
+ calculated from `name` and, if `name` does not contain a valid extension,
+ `png` is used by default.
  @param bundle Bundle where image is in. If `nil` defaults to 
  `[NSBundle mainBundle]`.
  @param hiRes Say if you want to search for high resolution version of 

@@ -39,6 +39,14 @@
     image = [[UIImage alloc] initWithContentsOfFile:[imageURL path]];
     STAssertNotNil(image, @"Image exists");
     
+    imageURL = [MUK URLForImageFileWithName:@"arrow" extension:nil bundle:bundle highResolution:NO];
+    image = [[UIImage alloc] initWithContentsOfFile:[imageURL path]];
+    STAssertNotNil(image, @"Image exists");
+    
+    imageURL = [MUK URLForImageFileWithName:@"arrow" extension:nil bundle:bundle highResolution:YES];
+    image = [[UIImage alloc] initWithContentsOfFile:[imageURL path]];
+    STAssertNotNil(image, @"Image exists");
+    
     imageURL = [MUK URLForImageFileWithName:@"arrow" extension:@"png" bundle:bundle highResolution:YES];
     image = [[UIImage alloc] initWithContentsOfFile:[imageURL path]];
     STAssertTrue([[imageURL path] rangeOfString:@"@2x"].location != NSNotFound, @"Image is hi res");

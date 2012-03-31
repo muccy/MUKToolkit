@@ -52,6 +52,8 @@
     if (!extension) {
         // Calculate name and extension
         extension = [name pathExtension];
+        if ([extension length] == 0) extension = @"png";
+        
         name = [name stringByDeletingPathExtension];
     }
     
