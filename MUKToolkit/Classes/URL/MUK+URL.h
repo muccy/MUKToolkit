@@ -41,5 +41,38 @@
  @return File URL to *Temporary* directory.
  */
 + (NSURL *)URLForTemporaryDirectory;
+/**
+ File URL to an image file.
+ 
+ You can use this method to find images in various bundles.
+    NSURL *imageURL = [MUK URLForImageFileWithName:@"panda.png" 
+                        extension:nil bundle:aBundle highResolution:YES];
+ 
+ @param name Name of image. If you have an image file called 
+ `panda@2x.png`, `name` will be `panda`.
+ @param extension Extension of image. If you have an image file called 
+ `panda@2x.png`, `extension` will be `png`. If `nil` extension is 
+ calculated from `name`.
+ @param bundle Bundle where image is in. If `nil` defaults to 
+ `[NSBundle mainBundle]`.
+ @param hiRes Say if you want to search for high resolution version of 
+ the image: if `YES`, this method searches for `name@2x` image before.
+ @return File URL of image.
+ */
++ (NSURL *)URLForImageFileWithName:(NSString *)name extension:(NSString *)extension bundle:(NSBundle *)bundle highResolution:(BOOL)hiRes;
+/**
+ Shortend to URLForImageFileWithName:extension:bundle:highResolution:
+ 
+ This method calls URLForImageFileWithName:extension:bundle:highResolution:
+ with `name`=`name`, `extension`=`nil`, `bundle`=`bundle` and
+ `highResolution` depending from main screen scale.
+ 
+ @param name Full name of image (e.g. `panda.png`).
+ @param bundle Bundle where image is in. If `nil` defaults to 
+ `[NSBundle mainBundle]`.
+ @return File URL of image.
+ @see URLForImageFileWithName:extension:bundle:highResolution:
+ */
++ (NSURL *)URLForImageFileNamed:(NSString *)name bundle:(NSBundle *)bundle;
 
 @end

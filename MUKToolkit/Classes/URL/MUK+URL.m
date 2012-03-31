@@ -24,6 +24,7 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #import "MUK+URL.h"
+#import <UIKit/UIKit.h>
 
 @implementation MUK (URL)
 
@@ -42,6 +43,42 @@
     }
     
     return nil;
+}
+
++ (NSURL *)URLForImageFileWithName:(NSString *)name extension:(NSString *)extension bundle:(NSBundle *)bundle highResolution:(BOOL)hiRes
+{
+    bundle = bundle ?: [NSBundle mainBundle];
+    
+    if (!extension) {
+        // Calculate name and extension
+        extension = [name pathExtension];
+        name = [name stringByDeletingPathExtension];
+    }
+    
+    NSString *hiResName = nil;
+    if (hiRes) {
+        // Try to find high resolution image
+        hiResName = [name stringByAppendingString:@"@2x"];
+    }
+    
+    NSURL *fileURL = nil;
+    if (hiResName) {
+        // Search URL for high resolution
+        fileURL = [bundle URLForResource:hiResName withExtension:extension];
+    }
+    
+    if (fileURL == nil) {
+        // If no high resolution required or no high resolution found search
+        // for regular files
+        fileURL = [bundle URLForResource:name withExtension:extension]; 
+    }
+    
+    return fileURL;
+}
+
++ (NSURL *)URLForImageFileNamed:(NSString *)name bundle:(NSBundle *)bundle {
+    BOOL hiRes = ([[UIScreen mainScreen] scale] > 1.1);
+    return [self URLForImageFileWithName:name extension:nil bundle:bundle highResolution:hiRes];
 }
 
 @end
