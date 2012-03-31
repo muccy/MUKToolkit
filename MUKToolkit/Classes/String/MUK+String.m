@@ -85,6 +85,17 @@
             break;
         }
             
+        case MUKStringTransformUppercaseFirstLetter: {
+            NSInteger len = [string length];
+            if (len >= 1) {
+                NSRange firstLetterRange = NSMakeRange(0, 1);
+                NSRange restOfWordRange = NSMakeRange(1, len-1);
+                output = [NSString stringWithFormat:@"%@%@", [[string substringWithRange:firstLetterRange] uppercaseString], [string substringWithRange:restOfWordRange]];
+            }
+            
+            break;
+        }
+            
         default:
             break;
     }

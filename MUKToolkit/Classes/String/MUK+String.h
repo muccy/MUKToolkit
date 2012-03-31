@@ -29,7 +29,8 @@ typedef enum {
     MUKStringTransformIdentity = 0,
     MUKStringTransformReverse,
     MUKStringTransformURLEncode,
-    MUKStringTransformURLDecode
+    MUKStringTransformURLDecode,
+    MUKStringTransformUppercaseFirstLetter
 } MUKStringTransform;
 
 typedef enum {
@@ -56,6 +57,7 @@ typedef enum {
  * `MUKStringTransformReverse` reverses the string.
  * `MUKStringTransformURLEncode` URL encode the string.
  * `MUKStringTransformURLDecode` URL decode the string.
+ * `MUKStringTransformUppercaseFirstLetter` turns first letter of the string to uppercase.
  
  @param string String to transform.
  @param transform Kind of trasform to be applied to the given string.

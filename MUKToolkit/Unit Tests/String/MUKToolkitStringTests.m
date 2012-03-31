@@ -93,4 +93,26 @@
     STAssertEqualObjects(expected, calculated, nil);
 }
 
+- (void)testUppercase {
+    NSString *string = @"hello";
+    NSString *expected = @"Hello";
+    NSString *calculated = [MUK string:string applyingTransform:MUKStringTransformUppercaseFirstLetter];
+    STAssertEqualObjects(expected, calculated, nil);
+    
+    string = @"Hello";
+    expected = @"Hello";
+    calculated = [MUK string:string applyingTransform:MUKStringTransformUppercaseFirstLetter];
+    STAssertEqualObjects(expected, calculated, nil);
+    
+    string = @"h";
+    expected = @"H";
+    calculated = [MUK string:string applyingTransform:MUKStringTransformUppercaseFirstLetter];
+    STAssertEqualObjects(expected, calculated, nil);
+    
+    string = @"";
+    expected = @"";
+    calculated = [MUK string:string applyingTransform:MUKStringTransformUppercaseFirstLetter];
+    STAssertEqualObjects(expected, calculated, nil);
+}
+
 @end
