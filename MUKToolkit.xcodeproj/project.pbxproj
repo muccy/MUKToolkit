@@ -55,6 +55,11 @@
 		065793FE1524EDEA00D6762A /* MUK+Array.h in Headers */ = {isa = PBXBuildFile; fileRef = 065793FC1524EDEA00D6762A /* MUK+Array.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		065793FF1524EDEA00D6762A /* MUK+Array.m in Sources */ = {isa = PBXBuildFile; fileRef = 065793FD1524EDEA00D6762A /* MUK+Array.m */; };
 		065794031524F0CE00D6762A /* MUKToolkitArrayTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 065794021524F0CE00D6762A /* MUKToolkitArrayTests.m */; };
+		06D0F7971529DAC30014FE6B /* MUK+Data.h in Headers */ = {isa = PBXBuildFile; fileRef = 06D0F7951529DAC30014FE6B /* MUK+Data.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		06D0F7981529DAC30014FE6B /* MUK+Data.m in Sources */ = {isa = PBXBuildFile; fileRef = 06D0F7961529DAC30014FE6B /* MUK+Data.m */; };
+		06D0F79A1529DC050014FE6B /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06D0F7991529DC040014FE6B /* Security.framework */; };
+		06D0F79B1529DC0F0014FE6B /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06D0F7991529DC040014FE6B /* Security.framework */; };
+		06D0F79F1529DCAE0014FE6B /* MUKToolkitDataTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 06D0F79E1529DCAE0014FE6B /* MUKToolkitDataTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,6 +114,11 @@
 		065793FD1524EDEA00D6762A /* MUK+Array.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MUK+Array.m"; sourceTree = "<group>"; };
 		065794011524F0CE00D6762A /* MUKToolkitArrayTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUKToolkitArrayTests.h; sourceTree = "<group>"; };
 		065794021524F0CE00D6762A /* MUKToolkitArrayTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUKToolkitArrayTests.m; sourceTree = "<group>"; };
+		06D0F7951529DAC30014FE6B /* MUK+Data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MUK+Data.h"; sourceTree = "<group>"; };
+		06D0F7961529DAC30014FE6B /* MUK+Data.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MUK+Data.m"; sourceTree = "<group>"; };
+		06D0F7991529DC040014FE6B /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		06D0F79D1529DCAE0014FE6B /* MUKToolkitDataTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUKToolkitDataTests.h; sourceTree = "<group>"; };
+		06D0F79E1529DCAE0014FE6B /* MUKToolkitDataTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUKToolkitDataTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +126,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06D0F79A1529DC050014FE6B /* Security.framework in Frameworks */,
 				0610AD0915261C9D00705663 /* CoreGraphics.framework in Frameworks */,
 				0610AD0A15261C9D00705663 /* UIKit.framework in Frameworks */,
 				0657938B1523337F00D6762A /* Foundation.framework in Frameworks */,
@@ -126,6 +137,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06D0F79B1529DC0F0014FE6B /* Security.framework in Frameworks */,
 				065793991523337F00D6762A /* SenTestingKit.framework in Frameworks */,
 				0610AD0C15261CA700705663 /* CoreGraphics.framework in Frameworks */,
 				0657939B1523337F00D6762A /* UIKit.framework in Frameworks */,
@@ -218,6 +230,7 @@
 		065793891523337F00D6762A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				06D0F7991529DC040014FE6B /* Security.framework */,
 				0610AD0715261C9D00705663 /* CoreGraphics.framework */,
 				0610AD0815261C9D00705663 /* UIKit.framework */,
 				0657938A1523337F00D6762A /* Foundation.framework */,
@@ -232,6 +245,7 @@
 			children = (
 				065793FB1524EDD300D6762A /* Array */,
 				065793CA152335D400D6762A /* Base */,
+				06D0F7941529DAAE0014FE6B /* Data */,
 				065793F2152466DD00D6762A /* Date */,
 				0610AD591526274500705663 /* Geometry */,
 				0610ADAA15263CD900705663 /* Object */,
@@ -247,6 +261,7 @@
 			children = (
 				065794001524F0B800D6762A /* Array */,
 				065793EB1523431100D6762A /* Base */,
+				06D0F79C1529DC960014FE6B /* Data */,
 				065793F71524672C00D6762A /* Date */,
 				0610AD5F1526277200705663 /* Geometry */,
 				065793E4152342A800D6762A /* String */,
@@ -330,6 +345,24 @@
 			path = Array;
 			sourceTree = "<group>";
 		};
+		06D0F7941529DAAE0014FE6B /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				06D0F7951529DAC30014FE6B /* MUK+Data.h */,
+				06D0F7961529DAC30014FE6B /* MUK+Data.m */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		06D0F79C1529DC960014FE6B /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				06D0F79D1529DCAE0014FE6B /* MUKToolkitDataTests.h */,
+				06D0F79E1529DCAE0014FE6B /* MUKToolkitDataTests.m */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -346,6 +379,7 @@
 				0610AC971525D9DA00705663 /* MUK+URL.h in Headers */,
 				0610AD5C1526274500705663 /* MUK+Geometry.h in Headers */,
 				0610ADAE15263CEB00705663 /* MUK+Object.h in Headers */,
+				06D0F7971529DAC30014FE6B /* MUK+Data.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -485,6 +519,7 @@
 				0610AC981525D9DA00705663 /* MUK+URL.m in Sources */,
 				0610AD5D1526274500705663 /* MUK+Geometry.m in Sources */,
 				0610ADAF15263CEB00705663 /* MUK+Object.m in Sources */,
+				06D0F7981529DAC30014FE6B /* MUK+Data.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -498,6 +533,7 @@
 				065794031524F0CE00D6762A /* MUKToolkitArrayTests.m in Sources */,
 				0610AD621526277200705663 /* MUKToolkitGeometryTests.m in Sources */,
 				0610AE3C1526FC7600705663 /* MUKToolkitURLTests.m in Sources */,
+				06D0F79F1529DCAE0014FE6B /* MUKToolkitDataTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

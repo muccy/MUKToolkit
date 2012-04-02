@@ -23,39 +23,43 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#import <Foundation/Foundation.h>
+#import "MUK+Data.h"
+#import <CommonCrypto/CommonDigest.h>
 
-/**
- `MUK` is not a class you need to instantiate: it is only the namespace where
- toolkit methods live.
- 
- This toolkit do not want to *pollute* system namespaces with categories, but
- exposes a set of class methods.
- 
- See various categories:
- 
- * MUK(Generic)
- * MUK(Array)
- * MUK(Data)
- * MUK(Date)
- * MUK(Geometry)
- * MUK(Object)
- * MUK(String)
- * MUK(URL)
- 
- */
-@interface MUK : NSObject
-@end
+@implementation MUK (Data)
 
-/**
- Generic methods.
- */
-@interface MUK (Generic)
-/**
- Discover if a value is flagged into bitmask.
- @param bitmask The bitmask where flag is searched.
- @param flag The value searched in the bitmask.
- @return YES if flag bit is found into bitmask.
- */
-+ (BOOL)bitmask:(NSUInteger)bitmask containsFlag:(NSUInteger)flag;
++ (NSData *)data:(NSData *)data applyingTransform:(MUKDataTransform)transform
+{
+    if (data == nil) return nil;
+    
+    NSData *transformedData = data;
+    
+    switch (transform) {
+        case MUKDataTransformSHA1: {
+            unsigned char hashedChars[CC_SHA1_DIGEST_LENGTH];
+            CC_SHA1([data bytes], [data length], hashedChars);
+            transformedData = [NSData dataWithBytes:hashedChars length:CC_SHA1_DIGEST_LENGTH];
+            break;
+        }
+            
+        default:
+            break;
+    }
+    
+    return transformedData;
+}
+
++ (void)data:(NSData *)data enumerateBytesUsingBlock:(void (^)(unsigned char const, NSInteger, BOOL *))block
+{
+    if (!data || !block) return;
+    unsigned char const *bytes = [data bytes];
+    
+    for (NSInteger i=0; i<[data length]; i++) {
+        BOOL stop = NO;
+        block(bytes[i], i, &stop);
+        
+        if (stop) break;
+    } // for
+}
+
 @end

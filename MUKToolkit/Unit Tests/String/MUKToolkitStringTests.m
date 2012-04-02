@@ -115,4 +115,12 @@
     STAssertEqualObjects(expected, calculated, nil);
 }
 
+- (void)testHex {
+    NSString *string = @"Hello";
+    NSString *expectedString = @"48656c6c6f";
+    
+    NSString *hex = [MUK stringHexadecimalRepresentationOfData:[string dataUsingEncoding:NSUTF8StringEncoding]];
+    STAssertEqualObjects(expectedString, hex, @"Hex ok 'Hello' is '48656c6c6f'");
+}
+
 @end

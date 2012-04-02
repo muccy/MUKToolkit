@@ -87,5 +87,11 @@ typedef enum {
  @return A string produced applying transform on given string.
  */
 + (NSString *)string:(NSString *)string applyingTransform:(MUKStringTransform)transform;
+/**
+ Hexadecimal (`%02x`) representation of bytes contained in data.
+ @param data Data to convert to hex.
+ @return String hex representation (lowercase).
+ */
++ (NSString *)stringHexadecimalRepresentationOfData:(NSData *)data;
 
 @end

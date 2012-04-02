@@ -23,39 +23,37 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#import <Foundation/Foundation.h>
+#import "MUK.h"
+
+typedef enum {
+    MUKDataTransformIdentity = 0,
+    MUKDataTransformSHA1
+} MUKDataTransform;
 
 /**
- `MUK` is not a class you need to instantiate: it is only the namespace where
- toolkit methods live.
+ Methods involving data.
  
- This toolkit do not want to *pollute* system namespaces with categories, but
- exposes a set of class methods.
+ ## Constants
  
- See various categories:
+ `MUKDataTransform` enumerates possible transformations for data:
  
- * MUK(Generic)
- * MUK(Array)
- * MUK(Data)
- * MUK(Date)
- * MUK(Geometry)
- * MUK(Object)
- * MUK(String)
- * MUK(URL)
+ * `MUKDataTransformIdentity` does nothing.
+ * `MUKDataTransformSHA1` transform given data applying SHA-1 hashing.
  
  */
-@interface MUK : NSObject
-@end
-
+@interface MUK (Data)
 /**
- Generic methods.
+ Transforms data.
+ @param data Data to transform.
+ @param transform Kind of transform to apply to `data`.
+ @return Transformed data.
  */
-@interface MUK (Generic)
++ (NSData *)data:(NSData *)data applyingTransform:(MUKDataTransform)transform;
 /**
- Discover if a value is flagged into bitmask.
- @param bitmask The bitmask where flag is searched.
- @param flag The value searched in the bitmask.
- @return YES if flag bit is found into bitmask.
+ Enumerates bytes into data with a block.
+ @param data Data to enumerate.
+ @param block Block called for each byte. It also includes `index` of `byte` and 
+ `*stop` pointer, which could be set to `YES` in order to stop enumeration.
  */
-+ (BOOL)bitmask:(NSUInteger)bitmask containsFlag:(NSUInteger)flag;
++ (void)data:(NSData *)data enumerateBytesUsingBlock:(void (^)(unsigned char const byte, NSInteger index, BOOL *stop))block;
 @end

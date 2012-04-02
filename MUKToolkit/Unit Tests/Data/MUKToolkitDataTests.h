@@ -23,39 +23,8 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#import <Foundation/Foundation.h>
+#import <SenTestingKit/SenTestingKit.h>
 
-/**
- `MUK` is not a class you need to instantiate: it is only the namespace where
- toolkit methods live.
- 
- This toolkit do not want to *pollute* system namespaces with categories, but
- exposes a set of class methods.
- 
- See various categories:
- 
- * MUK(Generic)
- * MUK(Array)
- * MUK(Data)
- * MUK(Date)
- * MUK(Geometry)
- * MUK(Object)
- * MUK(String)
- * MUK(URL)
- 
- */
-@interface MUK : NSObject
-@end
+@interface MUKToolkitDataTests : SenTestCase
 
-/**
- Generic methods.
- */
-@interface MUK (Generic)
-/**
- Discover if a value is flagged into bitmask.
- @param bitmask The bitmask where flag is searched.
- @param flag The value searched in the bitmask.
- @return YES if flag bit is found into bitmask.
- */
-+ (BOOL)bitmask:(NSUInteger)bitmask containsFlag:(NSUInteger)flag;
 @end

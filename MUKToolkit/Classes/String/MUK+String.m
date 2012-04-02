@@ -24,6 +24,7 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #import "MUK+String.h"
+#import "MUK+Data.h"
 
 @implementation MUK (String)
 
@@ -101,6 +102,18 @@
     }
     
     return output;
+}
+
++ (NSString *)stringHexadecimalRepresentationOfData:(NSData *)data {
+    if (data == nil) return nil;
+    
+    NSMutableString *string = [[NSMutableString alloc] initWithCapacity:[data length]];
+    [MUK data:data enumerateBytesUsingBlock:^(const unsigned char byte, NSInteger index, BOOL *stop) 
+    {
+        [string appendFormat:@"%02x", byte]; 
+    }];
+    
+    return string;
 }
 
 @end
