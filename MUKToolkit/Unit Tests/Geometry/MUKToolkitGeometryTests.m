@@ -26,6 +26,10 @@
 #import "MUKToolkitGeometryTests.h"
 #import "MUK+Geometry.h"
 
+@interface MUKToolkitGeometryTests ()
+- (CGPoint)centerOfRect_:(CGRect)rect;
+@end
+
 @implementation MUKToolkitGeometryTests
 
 - (void)testValueRounding {    
@@ -78,6 +82,182 @@
     expectedRect = CGRectMake(0.0, 1.0, 0.0, 1.7);
     roundedRect = [MUK rect:rect geometricRoundingOfDimensions:(MUKGeometricDimensionX|MUKGeometricDimensionY|MUKGeometricDimensionWidth)];
     STAssertTrue(CGRectEqualToRect(roundedRect, expectedRect), @"Only height rounding not applied");
+}
+
+- (void)testTransformIdentity {
+    CGRect rect = CGRectMake(10, 10, 200, 200);
+    CGRect baseRect = CGRectMake(0, 0, 200, 100);
+    CGRect transformedRect = [MUK rect:rect transform:MUKGeometryTransformIdentity respectToRect:baseRect];
+    STAssertTrue(CGRectEqualToRect(rect, transformedRect), @"Should be the same of the original rect");
+}
+
+- (void)testTransformScaleToFill {
+    CGRect rect = CGRectMake(10, 10, 200, 200);
+    CGRect baseRect = CGRectMake(0, 0, 200, 100);
+    CGRect transformedRect = [MUK rect:rect transform:MUKGeometryTransformScaleToFill respectToRect:baseRect];
+    STAssertTrue(CGRectEqualToRect(baseRect, transformedRect), @"Should be the same of the base rect");
+}
+
+- (void)testTransformAspectFit {
+    // Ratio = 1
+    CGRect rect = CGRectMake(10, 10, 200, 200);
+    float aspectRatio = rect.size.width/rect.size.height;
+    CGRect baseRect = CGRectMake(100, 100, 57, 39);
+    
+    CGRect transformedRect = [MUK rect:rect transform:MUKGeometryTransformScaleAspectFit respectToRect:baseRect];
+    float transformedAspectRatio = transformedRect.size.width/transformedRect.size.height;
+    STAssertEqualsWithAccuracy(aspectRatio, transformedAspectRatio, 0.000001, @"Aspect ratio unchanged");
+    STAssertTrue(CGRectContainsRect(baseRect, transformedRect), @"Fitted rect should be inside base rect");
+    STAssertTrue(CGPointEqualToPoint([self centerOfRect_:transformedRect], [self centerOfRect_:baseRect]), @"Centers must be the same");
+    
+    // Ratio > 1
+    rect = CGRectMake(10, 10, 301, 201);
+    aspectRatio = rect.size.width/rect.size.height;
+    
+    transformedRect = [MUK rect:rect transform:MUKGeometryTransformScaleAspectFit respectToRect:baseRect];
+    transformedAspectRatio = transformedRect.size.width/transformedRect.size.height;
+    STAssertEqualsWithAccuracy(aspectRatio, transformedAspectRatio, 0.000001, @"Aspect ratio unchanged");
+    STAssertTrue(CGRectContainsRect(baseRect, transformedRect), @"Fitted rect should be inside base rect");
+    STAssertTrue(CGPointEqualToPoint([self centerOfRect_:transformedRect], [self centerOfRect_:baseRect]), @"Centers must be the same");
+    
+    // Ratio < 1
+    rect = CGRectMake(10, 10, 11, 201);
+    aspectRatio = rect.size.width/rect.size.height;
+    
+    transformedRect = [MUK rect:rect transform:MUKGeometryTransformScaleAspectFit respectToRect:baseRect];
+    transformedAspectRatio = transformedRect.size.width/transformedRect.size.height;
+    STAssertEqualsWithAccuracy(aspectRatio, transformedAspectRatio, 0.000001, @"Aspect ratio unchanged");
+    STAssertTrue(CGRectContainsRect(baseRect, transformedRect), @"Fitted rect should be inside base rect");
+    STAssertTrue(CGPointEqualToPoint([self centerOfRect_:transformedRect], [self centerOfRect_:baseRect]), @"Centers must be the same");
+}
+
+- (void)testTransformAspectFill {
+    // Ratio = 1
+    CGRect rect = CGRectMake(10, 10, 200, 200);
+    float aspectRatio = rect.size.width/rect.size.height;
+    CGRect baseRect = CGRectMake(100, 100, 57, 39);
+    
+    CGRect transformedRect = [MUK rect:rect transform:MUKGeometryTransformScaleAspectFill respectToRect:baseRect];
+    float transformedAspectRatio = transformedRect.size.width/transformedRect.size.height;
+    STAssertEqualsWithAccuracy(aspectRatio, transformedAspectRatio, 0.000001, @"Aspect ratio unchanged");
+    STAssertTrue(CGRectContainsRect(transformedRect, baseRect), @"Base rect should be inside transformed rect");
+    STAssertTrue(CGPointEqualToPoint([self centerOfRect_:transformedRect], [self centerOfRect_:baseRect]), @"Centers must be the same");
+    
+    // Ratio > 1
+    rect = CGRectMake(10, 10, 301, 201);
+    aspectRatio = rect.size.width/rect.size.height;
+    
+    transformedRect = [MUK rect:rect transform:MUKGeometryTransformScaleAspectFill respectToRect:baseRect];
+    transformedAspectRatio = transformedRect.size.width/transformedRect.size.height;
+    STAssertEqualsWithAccuracy(aspectRatio, transformedAspectRatio, 0.000001, @"Aspect ratio unchanged");
+    STAssertTrue(CGRectContainsRect(transformedRect, baseRect), @"Base rect should be inside transformed rect");
+    STAssertTrue(CGPointEqualToPoint([self centerOfRect_:transformedRect], [self centerOfRect_:baseRect]), @"Centers must be the same");
+    
+    // Ratio < 1
+    rect = CGRectMake(10, 10, 11, 201);
+    aspectRatio = rect.size.width/rect.size.height;
+    
+    transformedRect = [MUK rect:rect transform:MUKGeometryTransformScaleAspectFill respectToRect:baseRect];
+    transformedAspectRatio = transformedRect.size.width/transformedRect.size.height;
+    STAssertEqualsWithAccuracy(aspectRatio, transformedAspectRatio, 0.000001, @"Aspect ratio unchanged");
+    STAssertTrue(CGRectContainsRect(transformedRect, baseRect), @"Base rect should be inside transformed rect");
+    STAssertTrue(CGPointEqualToPoint([self centerOfRect_:transformedRect], [self centerOfRect_:baseRect]), @"Centers must be the same");
+}
+
+- (void)testTransformCenter {
+    CGRect rect = CGRectMake(11, 9, 211, 151);
+    CGRect baseRect = CGRectMake(107, 89, 201, 101);
+    
+    CGRect transformedRect = [MUK rect:rect transform:MUKGeometryTransformCenter respectToRect:baseRect];
+    STAssertTrue(CGSizeEqualToSize(transformedRect.size, rect.size), @"Size unchanged");
+    STAssertTrue(CGPointEqualToPoint([self centerOfRect_:transformedRect], [self centerOfRect_:baseRect]), @"Centers must be the same");
+}
+
+- (void)testTransformTop {
+    CGRect rect = CGRectMake(11, 9, 211, 151);
+    CGRect baseRect = CGRectMake(107, 89, 201, 101);
+    
+    CGRect transformedRect = [MUK rect:rect transform:MUKGeometryTransformTop respectToRect:baseRect];
+    STAssertTrue(CGSizeEqualToSize(transformedRect.size, rect.size), @"Size unchanged");
+    STAssertEqualsWithAccuracy(transformedRect.origin.y, baseRect.origin.y, 0.000000001, @"Stays at top");
+    STAssertEqualsWithAccuracy(CGRectGetMidX(transformedRect), CGRectGetMidX(baseRect), 0.00000001, @"Stays in the middle");
+}
+
+- (void)testTransformBottom {
+    CGRect rect = CGRectMake(11, 9, 211, 151);
+    CGRect baseRect = CGRectMake(107, 89, 201, 101);
+    
+    CGRect transformedRect = [MUK rect:rect transform:MUKGeometryTransformBottom respectToRect:baseRect];
+    STAssertTrue(CGSizeEqualToSize(transformedRect.size, rect.size), @"Size unchanged");
+    STAssertEqualsWithAccuracy(CGRectGetMaxY(transformedRect), CGRectGetMaxY(baseRect), 0.000000001, @"Stays at bottom");
+    STAssertEqualsWithAccuracy(CGRectGetMidX(transformedRect), CGRectGetMidX(baseRect), 0.00000001, @"Stays in the middle");
+}
+
+- (void)testTransformLeft {
+    CGRect rect = CGRectMake(11, 9, 211, 151);
+    CGRect baseRect = CGRectMake(107, 89, 201, 101);
+    
+    CGRect transformedRect = [MUK rect:rect transform:MUKGeometryTransformLeft respectToRect:baseRect];
+    STAssertTrue(CGSizeEqualToSize(transformedRect.size, rect.size), @"Size unchanged");
+    STAssertEqualsWithAccuracy(transformedRect.origin.x, baseRect.origin.x, 0.000000001, @"Stays at left");
+    STAssertEqualsWithAccuracy(CGRectGetMidY(transformedRect), CGRectGetMidY(baseRect), 0.00000001, @"Stays in the middle");
+}
+
+- (void)testTransformRight {
+    CGRect rect = CGRectMake(11, 9, 211, 151);
+    CGRect baseRect = CGRectMake(107, 89, 201, 101);
+    
+    CGRect transformedRect = [MUK rect:rect transform:MUKGeometryTransformRight respectToRect:baseRect];
+    STAssertTrue(CGSizeEqualToSize(transformedRect.size, rect.size), @"Size unchanged");
+    STAssertEqualsWithAccuracy(CGRectGetMaxX(transformedRect), CGRectGetMaxX(baseRect), 0.000000001, @"Stays at right");
+    STAssertEqualsWithAccuracy(CGRectGetMidY(transformedRect), CGRectGetMidY(baseRect), 0.00000001, @"Stays in the middle");
+}
+
+- (void)testTransformTopLeft {
+    CGRect rect = CGRectMake(11, 9, 211, 151);
+    CGRect baseRect = CGRectMake(107, 89, 201, 101);
+    
+    CGRect transformedRect = [MUK rect:rect transform:MUKGeometryTransformTopLeft respectToRect:baseRect];
+    STAssertTrue(CGSizeEqualToSize(transformedRect.size, rect.size), @"Size unchanged");
+    STAssertEqualsWithAccuracy(transformedRect.origin.x, baseRect.origin.x, 0.000000001, @"Stays at left");
+    STAssertEqualsWithAccuracy(transformedRect.origin.y, baseRect.origin.y, 0.00000001, @"Stays at top");
+}
+
+- (void)testTransformTopRight {
+    CGRect rect = CGRectMake(11, 9, 211, 151);
+    CGRect baseRect = CGRectMake(107, 89, 201, 101);
+    
+    CGRect transformedRect = [MUK rect:rect transform:MUKGeometryTransformTopRight respectToRect:baseRect];
+    STAssertTrue(CGSizeEqualToSize(transformedRect.size, rect.size), @"Size unchanged");
+    STAssertEqualsWithAccuracy(CGRectGetMaxX(transformedRect), CGRectGetMaxX(baseRect), 0.000000001, @"Stays at right");
+    STAssertEqualsWithAccuracy(transformedRect.origin.y, baseRect.origin.y, 0.00000001, @"Stays at top");
+}
+
+- (void)testTransforBottomLeft {
+    CGRect rect = CGRectMake(11, 9, 211, 151);
+    CGRect baseRect = CGRectMake(107, 89, 201, 101);
+    
+    CGRect transformedRect = [MUK rect:rect transform:MUKGeometryTransformBottomLeft respectToRect:baseRect];
+    STAssertTrue(CGSizeEqualToSize(transformedRect.size, rect.size), @"Size unchanged");
+    STAssertEqualsWithAccuracy(transformedRect.origin.x, baseRect.origin.x, 0.000000001, @"Stays at left");
+    STAssertEqualsWithAccuracy(CGRectGetMaxY(transformedRect), CGRectGetMaxY(baseRect), 0.000000001, @"Stays at bottom");
+}
+
+- (void)testTransformBottomRight {
+    CGRect rect = CGRectMake(11, 9, 211, 151);
+    CGRect baseRect = CGRectMake(107, 89, 201, 101);
+    
+    CGRect transformedRect = [MUK rect:rect transform:MUKGeometryTransformBottomRight respectToRect:baseRect];
+    STAssertTrue(CGSizeEqualToSize(transformedRect.size, rect.size), @"Size unchanged");
+    STAssertEqualsWithAccuracy(CGRectGetMaxX(transformedRect), CGRectGetMaxX(baseRect), 0.000000001, @"Stays at right");
+    STAssertEqualsWithAccuracy(CGRectGetMaxY(transformedRect), CGRectGetMaxY(baseRect), 0.000000001, @"Stays at bottom");
+}
+
+#pragma mark - Private
+
+- (CGPoint)centerOfRect_:(CGRect)rect {
+    CGPoint center = CGPointMake(CGRectGetMidX(rect), CGRectGetMidY(rect));
+    return center;
 }
 
 @end

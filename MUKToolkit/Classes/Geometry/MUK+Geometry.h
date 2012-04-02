@@ -52,6 +52,59 @@ typedef enum {
     MUKGeometricDimensionRect   = (MUKGeometricDimensionPoint|MUKGeometricDimensionSize)
 } MUKGeometricDimension;
 
+/**
+ `MUKGeometryTransform` is an enumeration used to change a rectangle into
+ another using a third rectangle as a reference (see rect:transform:respectToRect:).
+ 
+ * `MUKGeometryTransformIdentity`, creates same rectangle.
+ * `MUKGeometryTransformScaleToFill`, scales the rect to fit the size
+ of the base rect. This option changes the aspect ratio of the rect if
+ necessary. So, it returns base rect.
+ * `MUKGeometryTransformScaleAspectFit`, scales the rect to fit the size of
+ the base rect. This option maintains the aspect ratio of the rect. It
+ also centers transformed rect into base rect.
+ * `MUKGeometryTransformScaleAspectFill`, scales the rect to fill the size
+ of the base rect. Some portion of the rect may be lay outside the base 
+ rect. It also centers transformed rect into base rect.
+ * `MUKGeometryTransformCenter`, centers rect into base rect, without
+ changing its size.
+ * `MUKGeometryTransformTop`, it aligns rect top-center respect to base
+ rect, without changing its size.
+ * `MUKGeometryTransformBottom`, it aligns rect bottom-center respect to 
+ base rect, without changing its size.
+ * `MUKGeometryTransformLeft`, it aligns rect left-middle respect to base 
+ rect, without changing its size.
+ * `MUKGeometryTransformRight`, it aligns rect right-middle respect to base 
+ rect, without changing its size.
+ * `MUKGeometryTransformTopLeft`, it aligns rect top-top respect to base 
+ rect, without changing its size.
+ * `MUKGeometryTransformTopRight`, it aligns rect top-right respect to base 
+ rect, without changing its size.
+ * `MUKGeometryTransformBottomLeft`, it aligns rect bottom-left respect to
+ base rect, without changing its size.
+ * `MUKGeometryTransformBottomRight`, it aligns rect bottom-right respect 
+ to base rect, without changing its size.
+ 
+ */
+typedef enum {
+    MUKGeometryTransformIdentity = 0,
+    
+    MUKGeometryTransformScaleToFill,
+    MUKGeometryTransformScaleAspectFit,
+    MUKGeometryTransformScaleAspectFill,
+    
+    MUKGeometryTransformCenter,
+    MUKGeometryTransformTop,
+    MUKGeometryTransformBottom,
+    MUKGeometryTransformLeft,
+    MUKGeometryTransformRight,
+    
+    MUKGeometryTransformTopLeft,
+    MUKGeometryTransformTopRight,
+    MUKGeometryTransformBottomLeft,
+    MUKGeometryTransformBottomRight,  
+} MUKGeometryTransform;
+
 @interface MUK (Geometry)
 /**
  Rounds a float value for geometric representation.
@@ -85,5 +138,13 @@ typedef enum {
  @see size:geometricRoundingOfDimensions:
  */ 
 + (CGRect)rect:(CGRect)rect geometricRoundingOfDimensions:(MUKGeometricDimension)dimensions;
+/**
+ Change a rectangle into another using a third rectangle as a reference.
+ @param rect Original rectangle.
+ @param transform Kind of transform to apply.
+ @param baseRect Rectangle to use as base of transform.
+ @return Transformed rectangle.
+ */
++ (CGRect)rect:(CGRect)rect transform:(MUKGeometryTransform)transform respectToRect:(CGRect)baseRect;
 
 @end

@@ -75,5 +75,124 @@
     return roundedRect;
 }
 
++ (CGRect)rect:(CGRect)rect transform:(MUKGeometryTransform)transform respectToRect:(CGRect)baseRect
+{
+    CGRect transformedRect = rect;
+    
+    switch (transform) {
+        case MUKGeometryTransformScaleToFill: {
+            transformedRect = baseRect;
+            break;
+        }
+            
+        case MUKGeometryTransformScaleAspectFit: {
+            float originalAspectRatio = rect.size.width / rect.size.height;
+            float containerAspectRatio = baseRect.size.width / baseRect.size.height;
+            
+            CGRect scaledRect = rect;
+            if (originalAspectRatio > containerAspectRatio) {
+                // Scale by width
+                scaledRect.size.width = baseRect.size.width;
+                scaledRect.size.height = scaledRect.size.width * (1.0/originalAspectRatio);
+            } 
+            else {
+                // Scale by height
+                scaledRect.size.height = baseRect.size.height;
+                scaledRect.size.width = scaledRect.size.height * originalAspectRatio;
+            }
+            
+            transformedRect = [MUK rect:scaledRect transform:MUKGeometryTransformCenter respectToRect:baseRect];
+            break;
+        }
+            
+        case MUKGeometryTransformScaleAspectFill: {
+            float originalAspectRatio = rect.size.width / rect.size.height;
+            float containerAspectRatio = baseRect.size.width / baseRect.size.height;
+            
+            CGRect scaledRect = rect;
+            if (originalAspectRatio > containerAspectRatio) {
+                // Scale by height
+                scaledRect.size.height = baseRect.size.height;
+                scaledRect.size.width = scaledRect.size.height * originalAspectRatio;
+            } 
+            else {
+                // Scale by width
+                scaledRect.size.width = baseRect.size.width;
+                scaledRect.size.height = scaledRect.size.width * (1.0/originalAspectRatio);
+            }
+            
+            transformedRect = [MUK rect:scaledRect transform:MUKGeometryTransformCenter respectToRect:baseRect];
+            break;
+        }
+            
+        case MUKGeometryTransformCenter: {
+            transformedRect.origin.x = (baseRect.size.width - rect.size.width)/2.0 + baseRect.origin.x;
+            transformedRect.origin.y = (baseRect.size.height - rect.size.height)/2.0 + baseRect.origin.y;
+            
+            break;
+        }
+            
+        case MUKGeometryTransformTop: {
+            transformedRect.origin.x = (baseRect.size.width - rect.size.width)/2.0 + baseRect.origin.x;
+            transformedRect.origin.y = baseRect.origin.y;
+            
+            break;
+        }
+            
+        case MUKGeometryTransformBottom: {
+            transformedRect.origin.x = (baseRect.size.width - rect.size.width)/2.0 + baseRect.origin.x;
+            transformedRect.origin.y = baseRect.origin.y - (rect.size.height - baseRect.size.height);
+            
+            break;
+        }
+            
+        case MUKGeometryTransformLeft: {
+            transformedRect.origin.x = baseRect.origin.x;
+            transformedRect.origin.y = (baseRect.size.height - rect.size.height)/2.0 + baseRect.origin.y;
+            
+            break;
+        }
+            
+        case MUKGeometryTransformRight: {
+            transformedRect.origin.x = baseRect.origin.x - (rect.size.width - baseRect.size.width);
+            transformedRect.origin.y = (baseRect.size.height - rect.size.height)/2.0 + baseRect.origin.y;
+            
+            break;
+        }
+            
+        case MUKGeometryTransformTopLeft: {
+            transformedRect.origin.x = baseRect.origin.x;
+            transformedRect.origin.y = baseRect.origin.y;
+            
+            break;
+        }
+            
+        case MUKGeometryTransformTopRight: {
+            transformedRect.origin.x = baseRect.origin.x - (rect.size.width - baseRect.size.width);
+            transformedRect.origin.y = baseRect.origin.y;
+            
+            break;
+        }
+            
+        case MUKGeometryTransformBottomLeft: {
+            transformedRect.origin.x = baseRect.origin.x;
+            transformedRect.origin.y = baseRect.origin.y - (rect.size.height - baseRect.size.height);
+            
+            break;
+        }
+            
+        case MUKGeometryTransformBottomRight: {
+            transformedRect.origin.x = baseRect.origin.x - (rect.size.width - baseRect.size.width);
+            transformedRect.origin.y = baseRect.origin.y - (rect.size.height - baseRect.size.height);
+            
+            break;
+        }
+    
+        default:
+            break;
+    }
+    
+    return transformedRect;
+}
 
 @end
