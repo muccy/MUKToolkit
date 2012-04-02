@@ -25,6 +25,9 @@
 
 #import "MUK.h"
 
+/**
+ Generic methods for object level.
+ */
 @interface MUK (Object)
 
 /**

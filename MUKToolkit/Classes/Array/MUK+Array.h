@@ -25,6 +25,9 @@
 
 #import "MUK.h"
 
+/**
+ Methods involving arrays.
+ */
 @interface MUK (Array)
 /**
  Returns objects from array safely, without raising exceptions when `index` is

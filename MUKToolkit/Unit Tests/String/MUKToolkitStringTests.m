@@ -45,7 +45,7 @@
     STAssertEquals(firstIndex, 0, @"Enumeration must start from the beginning");
     
     firstIndex = -1;
-    [MUK string:string enumerateCharactersWithOptions:MUKStringEnumerateBackwards usingBlock:^(unichar c, NSInteger index, BOOL *stop) 
+    [MUK string:string enumerateCharactersWithOptions:MUKStringEnumerationBackwards usingBlock:^(unichar c, NSInteger index, BOOL *stop) 
      {
          if (firstIndex < 0) firstIndex = index;
          

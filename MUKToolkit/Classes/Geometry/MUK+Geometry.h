@@ -25,21 +25,7 @@
 
 #import "MUK.h"
 
-/** 
- ## Geometry Constants
- 
- `MUKGeometricDimension` is an enumeration used to compose bitmasks of geometric
- dimensions:
- 
- * `MUKGeometricDimensionX`, represents X coordinate.
- * `MUKGeometricDimensionY`, represents Y coordinate.
- * `MUKGeometricDimensionPoint`, represents coordinate (X and Y).
- * `MUKGeometricDimensionWidth`, represents width.
- * `MUKGeometricDimensionHeight`, represents height.
- * `MUKGeometricDimensionSize`, represents size (width and height).
- * `MUKGeometricDimensionRect`, represents rectangle (coordinate and size).
- 
- */
+
 typedef enum {
     MUKGeometricDimensionX      =   1 << 0,
     MUKGeometricDimensionY      =   1 << 1,
@@ -52,7 +38,47 @@ typedef enum {
     MUKGeometricDimensionRect   = (MUKGeometricDimensionPoint|MUKGeometricDimensionSize)
 } MUKGeometricDimension;
 
-/**
+typedef enum {
+    MUKGeometryTransformIdentity = 0,
+    
+    MUKGeometryTransformScaleToFill,
+    MUKGeometryTransformScaleAspectFit,
+    MUKGeometryTransformScaleAspectFill,
+    
+    MUKGeometryTransformCenter,
+    MUKGeometryTransformTop,
+    MUKGeometryTransformBottom,
+    MUKGeometryTransformLeft,
+    MUKGeometryTransformRight,
+    
+    MUKGeometryTransformTopLeft,
+    MUKGeometryTransformTopRight,
+    MUKGeometryTransformBottomLeft,
+    MUKGeometryTransformBottomRight,  
+} MUKGeometryTransform;
+
+
+/** 
+ Methods involving geometry.
+ 
+ ## Constants
+ 
+ ### MUKGeometricDimension
+ 
+ `MUKGeometricDimension` is an enumeration used to compose bitmasks of geometric
+ dimensions:
+ 
+ * `MUKGeometricDimensionX`, represents X coordinate.
+ * `MUKGeometricDimensionY`, represents Y coordinate.
+ * `MUKGeometricDimensionPoint`, represents coordinate (X and Y).
+ * `MUKGeometricDimensionWidth`, represents width.
+ * `MUKGeometricDimensionHeight`, represents height.
+ * `MUKGeometricDimensionSize`, represents size (width and height).
+ * `MUKGeometricDimensionRect`, represents rectangle (coordinate and size).
+ 
+ 
+ ### MUKGeometryTransform
+ 
  `MUKGeometryTransform` is an enumeration used to change a rectangle into
  another using a third rectangle as a reference (see rect:transform:respectToRect:).
  
@@ -86,25 +112,6 @@ typedef enum {
  to base rect, without changing its size.
  
  */
-typedef enum {
-    MUKGeometryTransformIdentity = 0,
-    
-    MUKGeometryTransformScaleToFill,
-    MUKGeometryTransformScaleAspectFit,
-    MUKGeometryTransformScaleAspectFill,
-    
-    MUKGeometryTransformCenter,
-    MUKGeometryTransformTop,
-    MUKGeometryTransformBottom,
-    MUKGeometryTransformLeft,
-    MUKGeometryTransformRight,
-    
-    MUKGeometryTransformTopLeft,
-    MUKGeometryTransformTopRight,
-    MUKGeometryTransformBottomLeft,
-    MUKGeometryTransformBottomRight,  
-} MUKGeometryTransform;
-
 @interface MUK (Geometry)
 /**
  Rounds a float value for geometric representation.

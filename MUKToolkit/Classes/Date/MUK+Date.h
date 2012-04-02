@@ -25,20 +25,27 @@
 
 #import "MUK.h"
 
-/** 
- ## Date Constants
- 
- `MUKDateOnlyCalendarUnits` defines a bitmask of `NSCalendarUnit` suitable to
- inspect the date without time components.
-    NSCalendarUnit const MUKDateOnlyCalendarUnits = (NSEraCalendarUnit|NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit|NSCalendarCalendarUnit|NSTimeZoneCalendarUnit);
- 
- `MUKDateAndTimeCalendarUnits` defines a bitmask of `NSCalendarUnit` suitable to
- inspect the date including time components.
-    NSCalendarUnit const MUKDateAndTimeCalendarUnits = (MUKDateOnlyCalendarUnits|NSDayCalendarUnit|NSHourCalendarUnit|NSMinuteCalendarUnit|NSSecondCalendarUnit);
- */
 extern NSCalendarUnit const MUKDateOnlyCalendarUnits;
 extern NSCalendarUnit const MUKDateAndTimeCalendarUnits;
 
+/** 
+ Methods involving dates.
+ 
+ ## Constants
+ 
+ `MUKDateOnlyCalendarUnits` defines a bitmask of `NSCalendarUnit` suitable to
+ inspect the date without time components.
+     NSCalendarUnit const MUKDateOnlyCalendarUnits = (NSEraCalendarUnit|
+            NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit|
+            NSCalendarCalendarUnit|NSTimeZoneCalendarUnit);
+ 
+ `MUKDateAndTimeCalendarUnits` defines a bitmask of `NSCalendarUnit` suitable to
+ inspect the date including time components.
+     NSCalendarUnit const MUKDateAndTimeCalendarUnits = (MUKDateOnlyCalendarUnits|
+            NSDayCalendarUnit|NSHourCalendarUnit|NSMinuteCalendarUnit|
+            NSSecondCalendarUnit);
+ 
+ */
 @interface MUK (Date)
 /**
  Transform a given date into another, manipulating its date components.

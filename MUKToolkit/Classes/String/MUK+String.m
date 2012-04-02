@@ -27,12 +27,12 @@
 
 @implementation MUK (String)
 
-+ (void)string:(NSString *)string enumerateCharactersWithOptions:(MUKStringOptions)options usingBlock:(void (^)(unichar c, NSInteger index, BOOL *stop))enumerator
++ (void)string:(NSString *)string enumerateCharactersWithOptions:(MUKStringEnumerationOptions)options usingBlock:(void (^)(unichar c, NSInteger index, BOOL *stop))enumerator
 {
     NSUInteger len = [string length];
     
     if (len > 0 && enumerator) {
-        if ([self bitmask:options containsFlag:MUKStringEnumerateBackwards]) {
+        if ([self bitmask:options containsFlag:MUKStringEnumerationBackwards]) {
             for (NSInteger i = len-1; i >= 0; i--) {
                 unichar c = [string characterAtIndex:i];
                 
@@ -64,7 +64,7 @@
             NSInteger len = [string length];
             if (len > 0) {
                 NSMutableString *mutString = [NSMutableString stringWithCapacity:len];
-                [self string:string enumerateCharactersWithOptions:MUKStringEnumerateBackwards usingBlock:^(unichar c, NSInteger index, BOOL *stop) 
+                [self string:string enumerateCharactersWithOptions:MUKStringEnumerationBackwards usingBlock:^(unichar c, NSInteger index, BOOL *stop) 
                 {
                     [mutString appendFormat:@"%C", c];
                 }];

@@ -31,11 +31,24 @@
  
  This toolkit do not want to *pollute* system namespaces with categories, but
  exposes a set of class methods.
+ 
+ See various categories:
+ 
+ * MUK(Generic)
+ * MUK(Array)
+ * MUK(Date)
+ * MUK(Geometry)
+ * MUK(Object)
+ * MUK(String)
+ * MUK(URL)
+ 
  */
 @interface MUK : NSObject
 @end
 
-
+/**
+ Generic methods.
+ */
 @interface MUK (Generic)
 /**
  Discover if a value is flagged into bitmask.

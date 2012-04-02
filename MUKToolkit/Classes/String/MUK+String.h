@@ -25,39 +25,62 @@
 
 #import "MUK.h"
 
+
 typedef enum {
     MUKStringTransformIdentity = 0,
     MUKStringTransformReverse,
     MUKStringTransformURLEncode,
     MUKStringTransformURLDecode,
-    MUKStringTransformUppercaseFirstLetter
+    MUKStringTransformUppercaseFirstLetter,
+    MUKStringTransformSHA1
 } MUKStringTransform;
 
 typedef enum {
-    MUKStringEnumerateBackwards = 1
-} MUKStringOptions;
+    MUKStringEnumerationNormal = 0,
+    MUKStringEnumerationBackwards = 1
+} MUKStringEnumerationOptions;
 
-@interface MUK (String)
+
 /**
- It enumerates characters in a string.
- @param string String to enumerate.
- @param options Set to `MUKStringEnumerateBackwards` if you want to enumerate 
- given string backwards. Otherwise set to `0`.
- @param enumerator A block which takes an `unichar`, which is the enumerated
- character, a `NSInteger`, which is the index of the character in the string,
- and a `BOOL *`, which is useful if you want to break enumeration.
- */
-+ (void)string:(NSString *)string enumerateCharactersWithOptions:(MUKStringOptions)options usingBlock:(void (^)(unichar c, NSInteger index, BOOL *stop))enumerator;
-/**
- It transforms a given string.
+ Methods involving strings.
+
+ ## Constants
  
- You can perform a transform per time (`transform` is not a bitmask):
+ ### MUKStringTransform
+ 
+ `MUKStringTransform` enumerates kinds of transform you can apply to a 
+ string:
  
  * `MUKStringTransformIdentity` returns string untouched.
  * `MUKStringTransformReverse` reverses the string.
  * `MUKStringTransformURLEncode` URL encode the string.
  * `MUKStringTransformURLDecode` URL decode the string.
- * `MUKStringTransformUppercaseFirstLetter` turns first letter of the string to uppercase.
+ * `MUKStringTransformUppercaseFirstLetter` turns first letter of the string to uppercase. 
+ 
+ ### MUKStringEnumerationOptions
+ 
+ `MUKStringEnumerationOptions` enumerates options you can use during
+ enumeration:
+ 
+ * `MUKStringEnumerationNormal` means no option.
+ * `MUKStringEnumerationBackwards` means enumeration will run backwards.
+ 
+ */
+@interface MUK (String)
+/**
+ It enumerates characters in a string.
+ @param string String to enumerate.
+ @param options Set to `MUKStringEnumerationBackwards` if you want to enumerate 
+ given string backwards. Otherwise set to `0`.
+ @param enumerator A block which takes an `unichar`, which is the enumerated
+ character, a `NSInteger`, which is the index of the character in the string,
+ and a `BOOL *`, which is useful if you want to break enumeration.
+ */
++ (void)string:(NSString *)string enumerateCharactersWithOptions:(MUKStringEnumerationOptions)options usingBlock:(void (^)(unichar c, NSInteger index, BOOL *stop))enumerator;
+/**
+ It transforms a given string.
+ 
+ You can perform a transform per time (`transform` is not a bitmask):
  
  @param string String to transform.
  @param transform Kind of trasform to be applied to the given string.

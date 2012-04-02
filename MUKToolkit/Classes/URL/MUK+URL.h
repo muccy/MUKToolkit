@@ -25,6 +25,9 @@
 
 #import "MUK.h"
 
+/**
+ Methods involving URLs
+ */
 @interface MUK (URL)
 /**
  Shortend to get file URL to *Documents* directory.
