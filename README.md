@@ -44,14 +44,25 @@ Your project, now, should be like this:
 
 <img src="http://i.imgur.com/CHYZB.png" />
 
+#### Step 3: link required frameworks
+You need to link those framework in order to support `MUKToolkit`:
 
-#### Step 3: load categories
+* `Foundation`
+* `UIKit`
+* `CoreGraphics`
+* `Security`
+
+To do so you only need to click on + button in *Link binary with Libraries* pane and you can choose them.
+
+<img src="http://i.imgur.com/SVoud.png" />
+
+#### Step 4: load categories
 In order to load every method in `MUKToolkit` you need to insert `-ObjC` flag to `Other Linker Flags` in *Build Settings* of your project.
 
 <img src="http://i.imgur.com/fi8S0.png" /> 
 
 
-#### Step 4: import headers
+#### Step 5: import headers
 You only need to write `#import <MUKToolkit/MUKToolkit.h>` when you need headers.
 You can also import `MUKToolkit` headers in your `pch` file:
 
