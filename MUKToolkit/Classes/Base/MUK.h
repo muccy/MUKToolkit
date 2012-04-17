@@ -58,4 +58,50 @@
  @return YES if flag bit is found into bitmask.
  */
 + (BOOL)bitmask:(NSUInteger)bitmask containsFlag:(NSUInteger)flag;
+/**
+ Runs run loop, waiting for a signal which wakes it.
+ 
+ Example:
+ 
+    // t = 0
+    __block BOOL resultsReady = NO;
+ 
+    // Dispatch a long operation async...
+    dispatch_async(asyncQueue, ^(void) {
+        TimeConsumingRoutine();
+    
+        dispatch_async(dispatch_get_main_queue(), ^{
+            // Call on main queue to wake waiting run loop
+            resultsReady = YES;
+        });
+    });
+ 
+    // Wait on current run loop 
+    BOOL done = [MUK waitForCompletion:&resultsReady timeout:60.0 runLoop:nil];
+    
+    // Wait finished...
+    if (done) {
+        // t' = t + LongSyncFunction background execution time
+    }
+    else {
+        // t' = t + 60.0 (timeout)
+    }
+ 
+ @param done A pointer to a `BOOL`. You can assign `YES` to pointed value
+ in order to signal completion.
+ @param timeout Maximum time inverval before this method returns. You could
+ specify negative timeout in order not to use a timeout at all.
+ @param runLoop Run loop where to wait. Leave this parameter `nil` to use
+ `[NSRunLoop currentRunLoop]`.
+ @return `YES` if method returned because done signal; `NO` if method
+ returned because of timeout.
+ @warning Not setting a timeout could make this method waiting forever.
+ @warning You have to wake runLoop in order to make this method return. You
+ can invoke a method, using 
+ `[NSRunLoop performSelector:target:argument:order:modes:]` to do so.
+ Because you often use this method on main thread you can use
+ `dispatch_async` on main queue or 
+ `[NSObject performSelectorOnMainThread:withObject:waitUntilDone:]`.
+ */
++ (BOOL)waitForCompletion:(BOOL *)done timeout:(NSTimeInterval)timeout runLoop:(NSRunLoop *)runLoop;
 @end

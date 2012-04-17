@@ -31,4 +31,20 @@
     return ((bitmask & flag) == flag);
 }
 
++ (BOOL)waitForCompletion:(BOOL *)done timeout:(NSTimeInterval)timeout runLoop:(NSRunLoop *)runLoop {
+    NSDate *timeoutDate = (timeout > 0.0 ? [NSDate dateWithTimeIntervalSinceNow:timeout] : [NSDate distantFuture]);
+    runLoop = (runLoop ?: [NSRunLoop currentRunLoop]);
+    
+    BOOL timeoutFired = NO;
+    do {
+        [runLoop runMode:NSDefaultRunLoopMode beforeDate:timeoutDate];
+        
+        if (timeoutDate && [timeoutDate timeIntervalSinceNow] < 0.0) {
+            timeoutFired = YES;
+        }
+    } while (*done == NO && timeoutFired == NO);
+    
+    return !timeoutFired;
+}
+
 @end
