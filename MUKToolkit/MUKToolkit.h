@@ -1,3 +1,6 @@
+#import <Foundation/Foundation.h>
+#import <CoreGraphics/CoreGraphics.h>
+
 #import <MUKToolkit/MUK.h>
 #import <MUKToolkit/MUK+Array.h>
 #import <MUKToolkit/MUK+Data.h>
