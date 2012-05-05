@@ -93,5 +93,20 @@ typedef enum {
  @return String hex representation (lowercase).
  */
 + (NSString *)stringHexadecimalRepresentationOfData:(NSData *)data;
+/**
+ Converts time interval to a string in the format `hh:mm:ss`.
+ 
+ Negative intervals are displayed with `-` as prefix.
+ 
+ If timeInterval is less than `3600` (an hour) format is `minutes:seconds` 
+ (e.g.: `61` is converted to `01:01`).
+ 
+ If timeInterval is greater than `3600` (an hour) format is `hh:mm:ss`
+ (e.g.: `3601` is converted to `01:00:01`).
+ 
+ @param timeInterval Time inverval to convert.
+ @return String representation of timeInterval.
+ */
++ (NSString *)stringRepresentationOfTimeInterval:(NSTimeInterval)timeInterval;
 
 @end

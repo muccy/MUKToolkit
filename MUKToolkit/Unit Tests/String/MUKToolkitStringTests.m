@@ -123,4 +123,34 @@
     STAssertEqualObjects(expectedString, hex, @"Hex ok 'Hello' is '48656c6c6f'");
 }
 
+- (void)testDuration {
+    NSTimeInterval interval = 0.0;
+    NSString *string = [MUK stringRepresentationOfTimeInterval:interval];
+    STAssertEqualObjects(@"00:00", string, nil);
+    
+    interval = -1;
+    string = [MUK stringRepresentationOfTimeInterval:interval];
+    STAssertEqualObjects(@"-00:01", string, nil);
+    
+    interval = 1;
+    string = [MUK stringRepresentationOfTimeInterval:interval];
+    STAssertEqualObjects(@"00:01", string, nil);
+    
+    interval = 61;
+    string = [MUK stringRepresentationOfTimeInterval:interval];
+    STAssertEqualObjects(@"01:01", string, nil);
+    
+    interval = 3599;
+    string = [MUK stringRepresentationOfTimeInterval:interval];
+    STAssertEqualObjects(@"59:59", string, nil);
+    
+    interval = 3601;
+    string = [MUK stringRepresentationOfTimeInterval:interval];
+    STAssertEqualObjects(@"01:00:01", string, nil);
+    
+    interval = 360000;
+    string = [MUK stringRepresentationOfTimeInterval:interval];
+    STAssertEqualObjects(@"100:00:00", string, nil);
+}
+
 @end

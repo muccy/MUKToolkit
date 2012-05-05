@@ -116,4 +116,28 @@
     return string;
 }
 
++ (NSString *)stringRepresentationOfTimeInterval:(NSTimeInterval)timeInterval
+{
+    NSTimeInterval positiveInterval = ABS(timeInterval);
+    BOOL isNegative = (timeInterval < -0.00001);
+    NSInteger seconds = 0, minutes = 0, hours = 0;
+    
+    seconds = (NSInteger)positiveInterval % 60;
+    minutes = (NSInteger)(positiveInterval / 60) % 60;
+    hours = (NSInteger)(positiveInterval / 3600);
+    
+    NSMutableString *mutString = [NSMutableString string];
+    
+    if (isNegative) {
+        [mutString appendString:@"-"];
+    }
+    
+    if (hours > 0) {
+        [mutString appendFormat:@"%02i:", hours];
+    }
+    
+    [mutString appendFormat:@"%02i:%02i", minutes, seconds];
+    return mutString;
+}
+
 @end
