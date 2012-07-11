@@ -25,7 +25,6 @@
 
 #import "MUK+String.h"
 #import "MUK+Data.h"
-#import <CoreFoundation/CoreFoundation.h>
 
 @implementation MUK (String)
 
