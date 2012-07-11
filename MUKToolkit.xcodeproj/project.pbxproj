@@ -35,6 +35,7 @@
 		0610AE391526FC5E00705663 /* arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0610AE371526FC5E00705663 /* arrow@2x.png */; };
 		0610AE3C1526FC7600705663 /* MUKToolkitURLTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0610AE3B1526FC7600705663 /* MUKToolkitURLTests.m */; };
 		0610AE3E1526FE5C00705663 /* arrows.png in Resources */ = {isa = PBXBuildFile; fileRef = 0610AE3D1526FE5C00705663 /* arrows.png */; };
+		06283CAB15AD72AB006C30F0 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06283CAA15AD72AB006C30F0 /* CoreFoundation.framework */; };
 		0657938B1523337F00D6762A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0657938A1523337F00D6762A /* Foundation.framework */; };
 		065793991523337F00D6762A /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 065793981523337F00D6762A /* SenTestingKit.framework */; };
 		0657939B1523337F00D6762A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0657939A1523337F00D6762A /* UIKit.framework */; };
@@ -88,6 +89,7 @@
 		0610AE3A1526FC7600705663 /* MUKToolkitURLTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUKToolkitURLTests.h; sourceTree = "<group>"; };
 		0610AE3B1526FC7600705663 /* MUKToolkitURLTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUKToolkitURLTests.m; sourceTree = "<group>"; };
 		0610AE3D1526FE5C00705663 /* arrows.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrows.png; sourceTree = "<group>"; };
+		06283CAA15AD72AB006C30F0 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		065793871523337F00D6762A /* libMUKToolkit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMUKToolkit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		0657938A1523337F00D6762A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		065793971523337F00D6762A /* MUKToolkitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MUKToolkitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -126,6 +128,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06283CAB15AD72AB006C30F0 /* CoreFoundation.framework in Frameworks */,
 				06D0F79A1529DC050014FE6B /* Security.framework in Frameworks */,
 				0610AD0915261C9D00705663 /* CoreGraphics.framework in Frameworks */,
 				0610AD0A15261C9D00705663 /* UIKit.framework in Frameworks */,
@@ -230,6 +233,7 @@
 		065793891523337F00D6762A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				06283CAA15AD72AB006C30F0 /* CoreFoundation.framework */,
 				06D0F7991529DC040014FE6B /* Security.framework */,
 				0610AD0715261C9D00705663 /* CoreGraphics.framework */,
 				0610AD0815261C9D00705663 /* UIKit.framework */,

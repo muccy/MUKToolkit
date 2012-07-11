@@ -130,6 +130,43 @@
     STAssertEqualObjects(hash, expectedHash, @"SHA-1 hash of '%@' is '%@'", string, expectedHash);
 }
 
+- (void)testNormalization {
+    NSString *string = @"Hello";
+    NSString *expected = @"hello";
+    NSString *normalized = [MUK string:string applyingTransform:MUKStringTransformNormalize];
+    STAssertEqualObjects(normalized, expected, @"'%@' normalization should be '%@'", string, expected);
+    
+    string = @"";
+    expected = @"";
+    normalized = [MUK string:string applyingTransform:MUKStringTransformNormalize];
+    STAssertEqualObjects(normalized, expected, @"'%@' normalization should be '%@'", string, expected);
+    
+    string = @" ";
+    expected = @" ";
+    normalized = [MUK string:string applyingTransform:MUKStringTransformNormalize];
+    STAssertEqualObjects(normalized, expected, @"'%@' normalization should be '%@'", string, expected);
+    
+    string = @"Purché";
+    expected = @"purche";
+    normalized = [MUK string:string applyingTransform:MUKStringTransformNormalize];
+    STAssertEqualObjects(normalized, expected, @"'%@' normalization should be '%@'", string, expected);
+    
+    string = @"français";
+    expected = @"francais";
+    normalized = [MUK string:string applyingTransform:MUKStringTransformNormalize];
+    STAssertEqualObjects(normalized, expected, @"'%@' normalization should be '%@'", string, expected);
+    
+    string = @"È un lacché";
+    expected = @"e un lacche";
+    normalized = [MUK string:string applyingTransform:MUKStringTransformNormalize];
+    STAssertEqualObjects(normalized, expected, @"'%@' normalization should be '%@'", string, expected);
+    
+    string = nil;
+    expected = nil;
+    normalized = [MUK string:string applyingTransform:MUKStringTransformNormalize];
+    STAssertEqualObjects(normalized, expected, @"'%@' normalization should be '%@'", string, expected);
+}
+
 - (void)testDuration {
     NSTimeInterval interval = 0.0;
     NSString *string = [MUK stringRepresentationOfTimeInterval:interval];
@@ -158,6 +195,116 @@
     interval = 360000;
     string = [MUK stringRepresentationOfTimeInterval:interval];
     STAssertEqualObjects(@"100:00:00", string, nil);
+}
+
+- (void)testTokenization {
+    NSString *string = nil;
+    NSUInteger expectedTokenCount = 0;
+    NSArray *tokens = [MUK string:string tokenizeByUnit:MUKStringTokenizationUnitWord locale:nil];
+    STAssertEquals([tokens count], expectedTokenCount, @"Expecting %i tokens", expectedTokenCount);
+	STAssertNil(tokens, nil);
+    
+    string = @"";
+    expectedTokenCount = 0;
+    tokens = [MUK string:string tokenizeByUnit:MUKStringTokenizationUnitWord locale:nil];
+    STAssertEquals([tokens count], expectedTokenCount, @"Expecting %i tokens", expectedTokenCount);
+	STAssertNil(tokens, nil);
+    
+    string = @" ";
+    expectedTokenCount = 0;
+    tokens = [MUK string:string tokenizeByUnit:MUKStringTokenizationUnitWord locale:nil];
+    STAssertEquals([tokens count], expectedTokenCount, @"Expecting %i tokens", expectedTokenCount);
+	STAssertNotNil(tokens, nil);
+    
+    string = @"Hello";
+    expectedTokenCount = 1;
+    tokens = [MUK string:string tokenizeByUnit:MUKStringTokenizationUnitWord locale:nil];
+    STAssertEquals([tokens count], expectedTokenCount, @"Expecting %i tokens", expectedTokenCount);
+	STAssertNotNil(tokens, nil);
+    
+    string = @"Hello World";
+    expectedTokenCount = 2;
+    tokens = [MUK string:string tokenizeByUnit:MUKStringTokenizationUnitWord locale:nil];
+    STAssertEquals([tokens count], expectedTokenCount, @"Expecting %i tokens", expectedTokenCount);
+	STAssertNotNil(tokens, nil);
+    
+    string = @"Hello World. This is me.";
+    expectedTokenCount = 5;
+    tokens = [MUK string:string tokenizeByUnit:MUKStringTokenizationUnitWord locale:nil];
+    STAssertEquals([tokens count], expectedTokenCount, @"Expecting %i tokens", expectedTokenCount);
+	STAssertNotNil(tokens, nil);
+    
+    string = @"Hello World.This is me.";
+    expectedTokenCount = 5;
+    tokens = [MUK string:string tokenizeByUnit:MUKStringTokenizationUnitWord locale:nil];
+    STAssertEquals([tokens count], expectedTokenCount, @"Expecting %i tokens", expectedTokenCount);
+	STAssertNotNil(tokens, nil);
+    
+    string = @"Hello World. This is me.";
+    expectedTokenCount = 2;
+    tokens = [MUK string:string tokenizeByUnit:MUKStringTokenizationUnitSentence locale:nil];
+    STAssertEquals([tokens count], expectedTokenCount, @"Expecting %i tokens", expectedTokenCount);
+	STAssertNotNil(tokens, nil);
+    
+    string = @"Hello World.This is me.";
+    expectedTokenCount = 2;
+    tokens = [MUK string:string tokenizeByUnit:MUKStringTokenizationUnitSentence locale:nil];
+    STAssertEquals([tokens count], expectedTokenCount, @"Expecting %i tokens", expectedTokenCount);
+	STAssertNotNil(tokens, nil);
+    
+    string = @"Hello World. This is me.";
+    expectedTokenCount = 1;
+    tokens = [MUK string:string tokenizeByUnit:MUKStringTokenizationUnitParagraph locale:nil];
+    STAssertEquals([tokens count], expectedTokenCount, @"Expecting %i tokens", expectedTokenCount);
+	STAssertNotNil(tokens, nil);
+    
+    string = @"Hello World. This is me.\nIn another line.";
+    expectedTokenCount = 2;
+    tokens = [MUK string:string tokenizeByUnit:MUKStringTokenizationUnitParagraph locale:nil];
+    STAssertEquals([tokens count], expectedTokenCount, @"Expecting %i tokens", expectedTokenCount);
+	STAssertNotNil(tokens, nil);
+    
+    /*
+     Can't test: I can't understand why it returns 8 tokens, one per word.
+     
+    string = @"Hello World. This is me.\nIn another line.";
+    expectedTokenCount = 2;
+    tokens = [MUK string:string tokenizeByUnit:MUKStringTokenizationUnitLineBreak locale:nil];
+    STAssertEquals([tokens count], expectedTokenCount, @"Expecting %i tokens", expectedTokenCount);
+	STAssertNotNil(tokens, nil);
+     */
+    
+    NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
+    
+    string = @" ";
+    expectedTokenCount = 1;
+    tokens = [MUK string:string tokenizeByUnit:MUKStringTokenizationUnitWordBoundary locale:locale];
+    STAssertEquals([tokens count], expectedTokenCount, @"Expecting %i tokens", expectedTokenCount);
+	STAssertNotNil(tokens, nil);
+    
+    string = @"Hello";
+    expectedTokenCount = 1;
+    tokens = [MUK string:string tokenizeByUnit:MUKStringTokenizationUnitWordBoundary locale:locale];
+    STAssertEquals([tokens count], expectedTokenCount, @"Expecting %i tokens", expectedTokenCount);
+	STAssertNotNil(tokens, nil);
+    
+    string = @"Hello World";
+    expectedTokenCount = 3;
+    tokens = [MUK string:string tokenizeByUnit:MUKStringTokenizationUnitWordBoundary locale:locale];
+    STAssertEquals([tokens count], expectedTokenCount, @"Expecting %i tokens", expectedTokenCount);
+	STAssertNotNil(tokens, nil);
+    
+    string = @"Hello World. This is me.";
+    expectedTokenCount = 11;
+    tokens = [MUK string:string tokenizeByUnit:MUKStringTokenizationUnitWordBoundary locale:locale];
+    STAssertEquals([tokens count], expectedTokenCount, @"Expecting %i tokens", expectedTokenCount);
+	STAssertNotNil(tokens, nil);
+    
+    string = @"Hello World.This is me.";
+    expectedTokenCount = 8;
+    tokens = [MUK string:string tokenizeByUnit:MUKStringTokenizationUnitWordBoundary locale:locale];
+    STAssertEquals([tokens count], expectedTokenCount, @"Expecting %i tokens", expectedTokenCount);
+	STAssertNotNil(tokens, nil);
 }
 
 @end

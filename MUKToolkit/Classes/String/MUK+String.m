@@ -25,6 +25,7 @@
 
 #import "MUK+String.h"
 #import "MUK+Data.h"
+#import <CoreFoundation/CoreFoundation.h>
 
 @implementation MUK (String)
 
@@ -104,6 +105,28 @@
             break;
         }
             
+        case MUKStringTransformNormalize: {
+            // https://devforums.apple.com/message/363871#363871
+            
+            if (string) {
+        		NSMutableString *mutableString = [string mutableCopy];
+                
+                // Unicode normalization
+                CFStringNormalize((__bridge CFMutableStringRef)mutableString, kCFStringNormalizationFormD);
+                
+                /* 
+                 Removes case distinctions, removes distinctions of accents and other 
+                 diacritics, removes character width distinctions by mapping characters 
+                 in the range U+FF00-U+FFEF to their ordinary equivalents.
+                 */
+               	 CFStringFold((__bridge CFMutableStringRef)mutableString, kCFCompareCaseInsensitive | kCFCompareDiacriticInsensitive | kCFCompareWidthInsensitive, NULL);
+                
+                output = mutableString;
+            }
+            
+            break;
+        }
+            
         default:
             break;
     }
@@ -145,6 +168,44 @@
     
     [mutString appendFormat:@"%02i:%02i", minutes, seconds];
     return mutString;
+}
+
++ (NSArray *)string:(NSString *)string tokenizeByUnit:(MUKStringTokenizationUnit)unit locale:(NSLocale *)locale
+{
+    if ([string length] == 0) return nil;
+    
+    CFLocaleRef localeRef = (__bridge CFLocaleRef)locale;
+    CFStringRef stringRef = (__bridge CFStringRef)string;
+    NSMutableArray *tokens = [NSMutableArray array];
+    
+	CFStringTokenizerRef tokenizer = CFStringTokenizerCreate(kCFAllocatorDefault, stringRef, CFRangeMake(0, CFStringGetLength(stringRef)), unit, localeRef);
+    
+    BOOL shouldAdvanceToNextToken;
+    do {
+        CFStringTokenizerTokenType tokenType = CFStringTokenizerAdvanceToNextToken(tokenizer);
+        
+        if (kCFStringTokenizerTokenNone != tokenType) {
+            // Get this token
+            CFRange tokenRange = CFStringTokenizerGetCurrentTokenRange(tokenizer);
+            CFStringRef tokenValue = CFStringCreateWithSubstring(kCFAllocatorDefault, stringRef, tokenRange);
+            NSString *tokenString = (__bridge NSString *)tokenValue;
+            
+            // Store token
+            [tokens addObject:tokenString];
+            
+            // Cleanup
+            CFRelease(tokenValue);
+            
+            // Advance to next
+            shouldAdvanceToNextToken = YES;
+        }
+        else {
+            // No more tokens
+            shouldAdvanceToNextToken = NO;
+        }
+    } while (shouldAdvanceToNextToken);
+    
+	return tokens;
 }
 
 @end
