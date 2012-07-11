@@ -25,7 +25,7 @@
 
 #import "MUK.h"
 
-typedef enum {
+typedef enum : NSUInteger {
     MUKDataTransformIdentity = 0,
     MUKDataTransformSHA1
 } MUKDataTransform;

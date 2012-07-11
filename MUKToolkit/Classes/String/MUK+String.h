@@ -26,7 +26,7 @@
 #import "MUK.h"
 
 
-typedef enum {
+typedef enum : NSUInteger {
     MUKStringTransformIdentity = 0,
     MUKStringTransformReverse,
     MUKStringTransformURLEncode,
@@ -35,7 +35,7 @@ typedef enum {
     MUKStringTransformSHA1
 } MUKStringTransform;
 
-typedef enum {
+typedef enum : NSUInteger {
     MUKStringEnumerationNormal = 0,
     MUKStringEnumerationBackwards = 1
 } MUKStringEnumerationOptions;

@@ -26,7 +26,7 @@
 #import "MUK.h"
 
 
-typedef enum {
+typedef enum : NSUInteger {
     MUKGeometricDimensionX      =   1 << 0,
     MUKGeometricDimensionY      =   1 << 1,
     MUKGeometricDimensionPoint  =   (MUKGeometricDimensionX|MUKGeometricDimensionY),
@@ -38,7 +38,7 @@ typedef enum {
     MUKGeometricDimensionRect   = (MUKGeometricDimensionPoint|MUKGeometricDimensionSize)
 } MUKGeometricDimension;
 
-typedef enum {
+typedef enum : NSUInteger {
     MUKGeometryTransformIdentity = 0,
     
     MUKGeometryTransformScaleToFill,
