@@ -107,21 +107,21 @@
             
         case MUKStringTransformNormalize: {
             // https://devforums.apple.com/message/363871#363871
+            // but using Foundation and not Core Foundation
             
             if (string) {
-        		NSMutableString *mutableString = [string mutableCopy];
-                
-                // Unicode normalization
-                CFStringNormalize((__bridge CFMutableStringRef)mutableString, kCFStringNormalizationFormD);
-                
+                // Unicode normalization (form D)
+                // (like CFStringNormalize)
+                output = [string decomposedStringWithCanonicalMapping];
+
                 /* 
                  Removes case distinctions, removes distinctions of accents and other 
                  diacritics, removes character width distinctions by mapping characters 
                  in the range U+FF00-U+FFEF to their ordinary equivalents.
+                 
+                 (like CFStringFold)
                  */
-               	 CFStringFold((__bridge CFMutableStringRef)mutableString, kCFCompareCaseInsensitive | kCFCompareDiacriticInsensitive | kCFCompareWidthInsensitive, NULL);
-                
-                output = mutableString;
+                output = [string stringByFoldingWithOptions:NSCaseInsensitiveSearch|NSDiacriticInsensitiveSearch|NSWidthInsensitiveSearch locale:nil];
             }
             
             break;
