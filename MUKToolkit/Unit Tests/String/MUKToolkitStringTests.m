@@ -120,7 +120,14 @@
     NSString *expectedString = @"48656c6c6f";
     
     NSString *hex = [MUK stringHexadecimalRepresentationOfData:[string dataUsingEncoding:NSUTF8StringEncoding]];
-    STAssertEqualObjects(expectedString, hex, @"Hex ok 'Hello' is '48656c6c6f'");
+    STAssertEqualObjects(expectedString, hex, @"Hex ok '%@' is '%@'", string, expectedString);
+}
+
+- (void)testSHA1 {
+    NSString *string = @"Hello";
+    NSString *expectedHash = @"f7ff9e8b7bb2e09b70935a5d785e0cc5d9d0abf0";
+    NSString *hash = [MUK string:string applyingTransform:MUKStringTransformSHA1];
+    STAssertEqualObjects(hash, expectedHash, @"SHA-1 hash of '%@' is '%@'", string, expectedHash);
 }
 
 - (void)testDuration {

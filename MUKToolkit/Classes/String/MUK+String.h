@@ -56,6 +56,7 @@ typedef enum {
  * `MUKStringTransformURLEncode` URL encode the string.
  * `MUKStringTransformURLDecode` URL decode the string.
  * `MUKStringTransformUppercaseFirstLetter` turns first letter of the string to uppercase. 
+ * `MUKStringTransformSHA1` returns SHA-1 hash of the string.
  
  ### MUKStringEnumerationOptions
  

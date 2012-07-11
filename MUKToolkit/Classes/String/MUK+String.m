@@ -97,6 +97,13 @@
             break;
         }
             
+        case MUKStringTransformSHA1: {
+            NSData *data = [string dataUsingEncoding:NSUTF8StringEncoding];
+            NSData *trasformedData = [MUK data:data applyingTransform:MUKDataTransformSHA1];
+            output = [MUK stringHexadecimalRepresentationOfData:trasformedData];
+            break;
+        }
+            
         default:
             break;
     }
