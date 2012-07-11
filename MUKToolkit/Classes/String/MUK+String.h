@@ -41,14 +41,6 @@ typedef enum : NSUInteger {
     MUKStringEnumerationBackwards = 1
 } MUKStringEnumerationOptions;
 
-typedef enum : NSUInteger {
-    MUKStringTokenizationUnitWord = 0,
-    MUKStringTokenizationUnitSentence = 1,
-    MUKStringTokenizationUnitParagraph = 2,
-    MUKStringTokenizationUnitLineBreak = 3,
-    MUKStringTokenizationUnitWordBoundary = 4,
-} MUKStringTokenizationUnit;
-
 /**
  Methods involving strings.
 
@@ -127,15 +119,5 @@ typedef enum : NSUInteger {
  @return String representation of timeInterval.
  */
 + (NSString *)stringRepresentationOfTimeInterval:(NSTimeInterval)timeInterval;
-/**
- Tokenize a string.
- 
- @param string String to tokenize.
- @param unit How string is tokenized.
- @param locale Locale used to find words boundary when unit is set to 
- `MUKStringTokenizationUnitWordBoundary`. With other units this parameter is ignored.
- @return An array of strings, which are tokens derived from string.
- */
-+ (NSArray *)string:(NSString *)string tokenizeByUnit:(MUKStringTokenizationUnit)unit locale:(NSLocale *)locale;
 
 @end

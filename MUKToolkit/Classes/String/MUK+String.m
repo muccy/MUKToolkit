@@ -170,42 +170,4 @@
     return mutString;
 }
 
-+ (NSArray *)string:(NSString *)string tokenizeByUnit:(MUKStringTokenizationUnit)unit locale:(NSLocale *)locale
-{
-    if ([string length] == 0) return nil;
-    
-    CFLocaleRef localeRef = (__bridge CFLocaleRef)locale;
-    CFStringRef stringRef = (__bridge CFStringRef)string;
-    NSMutableArray *tokens = [NSMutableArray array];
-    
-	CFStringTokenizerRef tokenizer = CFStringTokenizerCreate(kCFAllocatorDefault, stringRef, CFRangeMake(0, CFStringGetLength(stringRef)), unit, localeRef);
-    
-    BOOL shouldAdvanceToNextToken;
-    do {
-        CFStringTokenizerTokenType tokenType = CFStringTokenizerAdvanceToNextToken(tokenizer);
-        
-        if (kCFStringTokenizerTokenNone != tokenType) {
-            // Get this token
-            CFRange tokenRange = CFStringTokenizerGetCurrentTokenRange(tokenizer);
-            CFStringRef tokenValue = CFStringCreateWithSubstring(kCFAllocatorDefault, stringRef, tokenRange);
-            NSString *tokenString = (__bridge NSString *)tokenValue;
-            
-            // Store token
-            [tokens addObject:tokenString];
-            
-            // Cleanup
-            CFRelease(tokenValue);
-            
-            // Advance to next
-            shouldAdvanceToNextToken = YES;
-        }
-        else {
-            // No more tokens
-            shouldAdvanceToNextToken = NO;
-        }
-    } while (shouldAdvanceToNextToken);
-    
-	return tokens;
-}
-
 @end
