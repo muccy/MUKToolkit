@@ -3,6 +3,7 @@
 
 #import <MUKToolkit/MUK.h>
 #import <MUKToolkit/MUK+Array.h>
+#import <MUKToolkit/MUK+Color.h>
 #import <MUKToolkit/MUK+Data.h>
 #import <MUKToolkit/MUK+Date.h>
 #import <MUKToolkit/MUK+Geometry.h>
