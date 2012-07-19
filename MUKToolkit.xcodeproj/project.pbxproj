@@ -35,7 +35,7 @@
 		0610AE391526FC5E00705663 /* arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0610AE371526FC5E00705663 /* arrow@2x.png */; };
 		0610AE3C1526FC7600705663 /* MUKToolkitURLTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0610AE3B1526FC7600705663 /* MUKToolkitURLTests.m */; };
 		0610AE3E1526FE5C00705663 /* arrows.png in Resources */ = {isa = PBXBuildFile; fileRef = 0610AE3D1526FE5C00705663 /* arrows.png */; };
-		06239FD715B7EADC0073C746 /* MUK+Color.h in Headers */ = {isa = PBXBuildFile; fileRef = 06239FD515B7EADC0073C746 /* MUK+Color.h */; };
+		06239FD715B7EADC0073C746 /* MUK+Color.h in Headers */ = {isa = PBXBuildFile; fileRef = 06239FD515B7EADC0073C746 /* MUK+Color.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		06239FD815B7EADC0073C746 /* MUK+Color.m in Sources */ = {isa = PBXBuildFile; fileRef = 06239FD615B7EADC0073C746 /* MUK+Color.m */; };
 		06239FDC15B7F4390073C746 /* MUKToolkitColorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 06239FDB15B7F4390073C746 /* MUKToolkitColorTests.m */; };
 		0657938B1523337F00D6762A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0657938A1523337F00D6762A /* Foundation.framework */; };
@@ -405,9 +405,9 @@
 				065793FE1524EDEA00D6762A /* MUK+Array.h in Headers */,
 				0610AC971525D9DA00705663 /* MUK+URL.h in Headers */,
 				0610AD5C1526274500705663 /* MUK+Geometry.h in Headers */,
+				06239FD715B7EADC0073C746 /* MUK+Color.h in Headers */,
 				0610ADAE15263CEB00705663 /* MUK+Object.h in Headers */,
 				06D0F7971529DAC30014FE6B /* MUK+Data.h in Headers */,
-				06239FD715B7EADC0073C746 /* MUK+Color.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
