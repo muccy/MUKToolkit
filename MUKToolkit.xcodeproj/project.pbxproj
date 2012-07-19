@@ -35,6 +35,9 @@
 		0610AE391526FC5E00705663 /* arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0610AE371526FC5E00705663 /* arrow@2x.png */; };
 		0610AE3C1526FC7600705663 /* MUKToolkitURLTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0610AE3B1526FC7600705663 /* MUKToolkitURLTests.m */; };
 		0610AE3E1526FE5C00705663 /* arrows.png in Resources */ = {isa = PBXBuildFile; fileRef = 0610AE3D1526FE5C00705663 /* arrows.png */; };
+		06239FD715B7EADC0073C746 /* MUK+Color.h in Headers */ = {isa = PBXBuildFile; fileRef = 06239FD515B7EADC0073C746 /* MUK+Color.h */; };
+		06239FD815B7EADC0073C746 /* MUK+Color.m in Sources */ = {isa = PBXBuildFile; fileRef = 06239FD615B7EADC0073C746 /* MUK+Color.m */; };
+		06239FDC15B7F4390073C746 /* MUKToolkitColorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 06239FDB15B7F4390073C746 /* MUKToolkitColorTests.m */; };
 		0657938B1523337F00D6762A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0657938A1523337F00D6762A /* Foundation.framework */; };
 		065793991523337F00D6762A /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 065793981523337F00D6762A /* SenTestingKit.framework */; };
 		0657939B1523337F00D6762A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0657939A1523337F00D6762A /* UIKit.framework */; };
@@ -88,6 +91,10 @@
 		0610AE3A1526FC7600705663 /* MUKToolkitURLTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUKToolkitURLTests.h; sourceTree = "<group>"; };
 		0610AE3B1526FC7600705663 /* MUKToolkitURLTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUKToolkitURLTests.m; sourceTree = "<group>"; };
 		0610AE3D1526FE5C00705663 /* arrows.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrows.png; sourceTree = "<group>"; };
+		06239FD515B7EADC0073C746 /* MUK+Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MUK+Color.h"; sourceTree = "<group>"; };
+		06239FD615B7EADC0073C746 /* MUK+Color.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MUK+Color.m"; sourceTree = "<group>"; };
+		06239FDA15B7F4390073C746 /* MUKToolkitColorTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUKToolkitColorTests.h; sourceTree = "<group>"; };
+		06239FDB15B7F4390073C746 /* MUKToolkitColorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUKToolkitColorTests.m; sourceTree = "<group>"; };
 		065793871523337F00D6762A /* libMUKToolkit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMUKToolkit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		0657938A1523337F00D6762A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		065793971523337F00D6762A /* MUKToolkitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MUKToolkitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -205,6 +212,24 @@
 			path = Images;
 			sourceTree = "<group>";
 		};
+		06239FD315B7EABF0073C746 /* Color */ = {
+			isa = PBXGroup;
+			children = (
+				06239FD515B7EADC0073C746 /* MUK+Color.h */,
+				06239FD615B7EADC0073C746 /* MUK+Color.m */,
+			);
+			path = Color;
+			sourceTree = "<group>";
+		};
+		06239FD915B7F41B0073C746 /* Color */ = {
+			isa = PBXGroup;
+			children = (
+				06239FDA15B7F4390073C746 /* MUKToolkitColorTests.h */,
+				06239FDB15B7F4390073C746 /* MUKToolkitColorTests.m */,
+			);
+			path = Color;
+			sourceTree = "<group>";
+		};
 		0657937C1523337F00D6762A = {
 			isa = PBXGroup;
 			children = (
@@ -245,6 +270,7 @@
 			children = (
 				065793FB1524EDD300D6762A /* Array */,
 				065793CA152335D400D6762A /* Base */,
+				06239FD315B7EABF0073C746 /* Color */,
 				06D0F7941529DAAE0014FE6B /* Data */,
 				065793F2152466DD00D6762A /* Date */,
 				0610AD591526274500705663 /* Geometry */,
@@ -261,6 +287,7 @@
 			children = (
 				065794001524F0B800D6762A /* Array */,
 				065793EB1523431100D6762A /* Base */,
+				06239FD915B7F41B0073C746 /* Color */,
 				06D0F79C1529DC960014FE6B /* Data */,
 				065793F71524672C00D6762A /* Date */,
 				0610AD5F1526277200705663 /* Geometry */,
@@ -380,6 +407,7 @@
 				0610AD5C1526274500705663 /* MUK+Geometry.h in Headers */,
 				0610ADAE15263CEB00705663 /* MUK+Object.h in Headers */,
 				06D0F7971529DAC30014FE6B /* MUK+Data.h in Headers */,
+				06239FD715B7EADC0073C746 /* MUK+Color.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -520,6 +548,7 @@
 				0610AD5D1526274500705663 /* MUK+Geometry.m in Sources */,
 				0610ADAF15263CEB00705663 /* MUK+Object.m in Sources */,
 				06D0F7981529DAC30014FE6B /* MUK+Data.m in Sources */,
+				06239FD815B7EADC0073C746 /* MUK+Color.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -534,6 +563,7 @@
 				0610AD621526277200705663 /* MUKToolkitGeometryTests.m in Sources */,
 				0610AE3C1526FC7600705663 /* MUKToolkitURLTests.m in Sources */,
 				06D0F79F1529DCAE0014FE6B /* MUKToolkitDataTests.m in Sources */,
+				06239FDC15B7F4390073C746 /* MUKToolkitColorTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
