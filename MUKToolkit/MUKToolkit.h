@@ -1,5 +1,6 @@
 #import <Foundation/Foundation.h>
 #import <CoreGraphics/CoreGraphics.h>
+#import <UIKit/UIKit.h>
 
 #import <MUKToolkit/MUK.h>
 #import <MUKToolkit/MUK+Array.h>
