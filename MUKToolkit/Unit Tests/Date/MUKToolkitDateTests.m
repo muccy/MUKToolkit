@@ -99,6 +99,9 @@
     
     STAssertTrue([MUK date:now isInTheSameDayOfDate:sameDate usingCalendar:nil], @"Same dates are in the same day");
     STAssertFalse([MUK date:now isInTheSameDayOfDate:veryLaterDate usingCalendar:nil], @"Very different dates are in different days");
+    
+    STAssertFalse([MUK date:now isLaterThanDate:sameDate], @"Same date doesn't come after now");
+    STAssertFalse([MUK date:now isEarlierThanDate:sameDate], @"Same date doesn't come before now");
 }
 
 @end

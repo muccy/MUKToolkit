@@ -51,12 +51,14 @@ NSCalendarUnit const MUKDateAndTimeCalendarUnits = (MUKDateOnlyCalendarUnits|NSD
 
 + (BOOL)date:(NSDate *)date isLaterThanDate:(NSDate *)otherDate
 {
-    return ([date laterDate:otherDate] == date);
+    NSComparisonResult result = [date compare:otherDate];
+    return (result == NSOrderedDescending);
 }
 
 + (BOOL)date:(NSDate *)date isEarlierThanDate:(NSDate *)otherDate
 {
-    return ([date earlierDate:otherDate] == date);
+    NSComparisonResult result = [date compare:otherDate];
+    return (result == NSOrderedAscending);
 }
 
 + (BOOL)date:(NSDate *)date isInTheSameDayOfDate:(NSDate *)otherDate usingCalendar:(NSCalendar *)calendar
