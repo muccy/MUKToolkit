@@ -25,8 +25,23 @@
 
 #import "MUK.h"
 
+typedef enum : NSUInteger {
+    MUKArrayTransformIdentity   =   0,
+    MUKArrayTransformReverse
+} MUKArrayTransform;
+
 /**
  Methods involving arrays.
+ 
+ ## Constants
+ 
+ ### MUKArrayTransform
+ 
+ `MUKArrayTransform` enumerates kinds of transform you can apply to an
+ array:
+ * `MUKArrayTransformIdentity` returns array untouched.
+ * `MUKArrayTransformReverse` reverses the array.
+ 
  */
 @interface MUK (Array)
 /**
@@ -60,5 +75,15 @@
  @return Given `array` mapped with `block`.
  */
 + (NSArray *)array:(NSArray *)array map:(id (^)(id obj, NSInteger index, BOOL *exclude, BOOL *stop))block;
+/**
+ It transforms a given array.
+ 
+ You can perform a transform per time (`transform` is not a bitmask):
+ 
+ @param array Array to transform.
+ @param transform Kind of trasform to be applied to the given array.
+ @return An array produced applying transform on given array.
+ */
++ (NSArray *)array:(NSArray *)array applyingTransform:(MUKArrayTransform)transform;
 
 @end

@@ -77,4 +77,26 @@
     STAssertEqualObjects(mappedArray, expectedArray, @"Arrays should match");
 }
 
+- (void)testIdentityTransform {
+    NSArray *array = @[];
+    NSArray *output = [MUK array:array applyingTransform:MUKArrayTransformIdentity];
+    STAssertEqualObjects(output, array, nil);
+    
+    array = @[@1, @2, @3];
+    output = [MUK array:array applyingTransform:MUKArrayTransformIdentity];
+    STAssertEqualObjects(output, array, nil);
+}
+
+- (void)testReverseTransform {
+    NSArray *array = @[];
+    NSArray *expected = @[];
+    NSArray *output = [MUK array:array applyingTransform:MUKArrayTransformReverse];
+    STAssertEqualObjects(output, expected, nil);
+    
+    array = @[@1, @2, @3];
+    expected = @[@3, @2, @1];
+    output = [MUK array:array applyingTransform:MUKArrayTransformReverse];
+    STAssertEqualObjects(output, expected, nil);
+}
+
 @end

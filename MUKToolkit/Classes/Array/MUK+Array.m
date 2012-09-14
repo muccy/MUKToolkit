@@ -62,4 +62,21 @@
     return mappedArray;
 }
 
++ (NSArray *)array:(NSArray *)array applyingTransform:(MUKArrayTransform)transform
+{
+    NSArray *output = array;
+    
+    switch (transform) {
+        case MUKArrayTransformReverse:
+            // Elegant solution from http://stackoverflow.com/a/586529
+            output = [[array reverseObjectEnumerator] allObjects];
+            break;
+            
+        default:
+            break;
+    }
+    
+    return output;
+}
+
 @end

@@ -70,12 +70,6 @@ typedef enum : NSUInteger {
  * `MUKStringEnumerationNormal` means no option.
  * `MUKStringEnumerationBackwards` means enumeration will run backwards.
  
- ### MUKStringTokenizationUnit
- 
- `MUKStringTokenizationUnit` enumerates kinds of tokenizations you can apply to a string.
- 
- Please refer to `CFStringTokenizer` documentation to see more details.
- 
  */
 @interface MUK (String)
 /**
