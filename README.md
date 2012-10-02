@@ -7,7 +7,7 @@ I decided not to use Objective-C categories in order not to pollute *system clas
 Requirements
 ------------
 * ARC enabled compiler
-* Deployment target: iOS 5 or greater
+* Deployment target: iOS 4.3 or greater
 * Base SDK: iOS 6 or greater
 * Xcode 4.5 or greater
 
