@@ -37,7 +37,7 @@
  `UIView` subclass called `MyView`: you can design your view into Interface Builder
  (in `MyView.xib`) and, then, you load view using:
     MyView *myView = [MUK objectOfClass:[MyView class] instantiatedFromNibNamed:nil
-                                 bundle:nil owner:nil options:nil atIndex:0];
+                                 bundle:nil owner:nil options:nil passingTest:nil];
  
  @param objectClassOrNil Class object to instantiate. If you specify it, then `nibNameOrNil`
  could be calculated at runtime and returned object is type checked. You could also
@@ -49,12 +49,18 @@
  `nil` if you do not need it.
  @param options Options dictionary used during instantiation. Not required; see
  `UINib` for details.
- @param index Index of object into NIB file.
+ @param predicate Block which test objects that are member of class given with
+ `objectClassOrNil`. If no class is specified, every object unarchived from NIB will
+ be passed to this block. This block takes two parameters: the object to inspect
+ and the index of this object.
+ @warning Instantiated object indexes may not reflect the position given in
+ Interface Builder. See: http://stackoverflow.com/a/14220815/224629 .
  @return Instantiated object. It could return `nil` if bundle could not be found,
- if object could not be instantiated, if object `index` is invalid or if type
- checking does not succeed.
+ if object could not be instantiated, if predicate returns `NO` to every passed 
+ object, and so on. Please remember the first object passing test is the object
+ returned from this method.
  */
 // Memo: I can not write Unit Tests because of runtime failures during instantiation
-+ (id)objectOfClass:(Class)objectClassOrNil instantiatedFromNibNamed:(NSString *)nibNameOrNil bundle:(NSBundle *)bundleOrNil owner:(id)owner options:(NSDictionary *)options atIndex:(NSInteger)index;
++ (id)objectOfClass:(Class)objectClassOrNil instantiatedFromNibNamed:(NSString *)nibNameOrNil bundle:(NSBundle *)bundleOrNil owner:(id)owner options:(NSDictionary *)options passingTest:(BOOL (^)(id obj, NSInteger idx))predicate;
 
 @end

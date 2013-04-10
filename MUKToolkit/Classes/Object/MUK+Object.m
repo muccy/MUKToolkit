@@ -28,7 +28,7 @@
 
 @implementation MUK (Object)
 
-+ (id)objectOfClass:(Class)objectClass instantiatedFromNibNamed:(NSString *)nibNameOrNil bundle:(NSBundle *)bundleOrNil owner:(id)owner options:(NSDictionary *)options atIndex:(NSInteger)index
++ (id)objectOfClass:(Class)objectClass instantiatedFromNibNamed:(NSString *)nibNameOrNil bundle:(NSBundle *)bundleOrNil owner:(id)owner options:(NSDictionary *)options passingTest:(BOOL (^)(id, NSInteger))predicate
 {
     nibNameOrNil = nibNameOrNil ?: NSStringFromClass(objectClass);
     if (nibNameOrNil == nil) return nil;
@@ -38,14 +38,50 @@
     UINib *nib = [UINib nibWithNibName:nibNameOrNil bundle:bundleOrNil];
     NSArray *objects = [nib instantiateWithOwner:owner options:options];
     
-    id object = [MUK array:objects objectAtIndex:index];
-    if (!objectClass) return object;
+    __block id matchingObject = nil;
+    [objects enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        if (objectClass) {
+            // If should filter by object class
+            if ([obj isMemberOfClass:objectClass]) {
+                // If class matches
+                if (predicate) {
+                    // If should filter by predicate, too
+                    if (predicate(obj, idx)) {
+                        // If predicate matches
+                        matchingObject = obj;
+                        *stop = YES;
+                    }
+                    // if predicate does not match, pass to next object
+                }
+                else {
+                    // If should not filter by predicate, take first object
+                    // which has matching class
+                    matchingObject = obj;
+                    *stop = YES;
+                } // if/else predicate
+            } // if obj class matches
+            // if obj class does not match, so object is not valid
+        }
+        else {
+            // If should not filter by class
+            if (predicate) {
+                // If should filter by predicate
+                if (predicate(obj, idx)) {
+                    // If predicate matches
+                    matchingObject = obj;
+                    *stop = YES;
+                }
+                // If predicate does not match, pass to next object
+            }
+            else {
+                // If should not filter by predicate, take first object you find
+                matchingObject = obj;
+                *stop = YES;
+            } // if/else predicate
+        } // if/else objectClass
+    }]; // enumerateObjectsUsingBlock
     
-    if ([object isMemberOfClass:objectClass]) {
-        return object;
-    }
-    
-    return nil;
+    return matchingObject;
 }
 
 @end
