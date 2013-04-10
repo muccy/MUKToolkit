@@ -35,9 +35,9 @@
     STAssertNoThrow([MUK array:array objectAtIndex:-100], @"+array:objectAtIndex: never throws exceptions");
     STAssertNoThrow([MUK array:array objectAtIndex:100], @"+array:objectAtIndex: never throws exceptions");
     
-    STAssertNotNil([MUK array:array objectAtIndex:0], @"Should return at item");
-    STAssertNil([MUK array:array objectAtIndex:-100], @"Should not return at item");
-    STAssertNil([MUK array:array objectAtIndex:100], @"Should not return at item");
+    STAssertNotNil([MUK array:array objectAtIndex:0], @"Should return an item");
+    STAssertNil([MUK array:array objectAtIndex:-100], @"Should not return an item");
+    STAssertNil([MUK array:array objectAtIndex:100], @"Should not return an item");
 }
 
 - (void)testMapping {

@@ -28,16 +28,11 @@
 @implementation MUK (Array)
 
 + (id)array:(NSArray *)array objectAtIndex:(NSInteger)index {
-    id object;
-    
-    @try {
-        object = [array objectAtIndex:index];
-    }
-    @catch (NSException *exception) {
-        object = nil;
+    if (index >= 0 && index < [array count]) {
+        return [array objectAtIndex:index];
     }
     
-    return object;
+    return nil;
 }
 
 + (NSArray *)array:(NSArray *)array map:(id (^)(id, NSInteger, BOOL *, BOOL *))block
