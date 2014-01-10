@@ -27,7 +27,8 @@
 
 typedef enum : NSUInteger {
     MUKDataTransformIdentity = 0,
-    MUKDataTransformSHA1
+    MUKDataTransformSHA1,
+    MUKDataTransformMD5
 } MUKDataTransform;
 
 /**
@@ -39,6 +40,7 @@ typedef enum : NSUInteger {
  
  * `MUKDataTransformIdentity` does nothing.
  * `MUKDataTransformSHA1` transform given data applying SHA-1 hashing.
+ * `MUKDataTransformMD5` transform given data applying MD5 hashing.
  
  */
 @interface MUK (Data)

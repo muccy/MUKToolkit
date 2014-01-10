@@ -33,6 +33,7 @@ typedef enum : NSUInteger {
     MUKStringTransformURLDecode,
     MUKStringTransformUppercaseFirstLetter,
     MUKStringTransformSHA1,
+    MUKStringTransformMD5,
     MUKStringTransformNormalize
 } MUKStringTransform;
 
@@ -57,6 +58,7 @@ typedef enum : NSUInteger {
  * `MUKStringTransformURLDecode` URL decode the string.
  * `MUKStringTransformUppercaseFirstLetter` turns first letter of the string to uppercase. 
  * `MUKStringTransformSHA1` returns SHA-1 hash of the string.
+ * `MUKStringTransformMD5` returns MD5 hash of the string.
  * `MUKStringTransformNormalize` returns a normalized string (Unicode normalization,
  case normalization, diacritics normalization, character width distinctions normalization).
  You could use this method to save normalized strings to Core Data fields, ready

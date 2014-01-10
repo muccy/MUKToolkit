@@ -130,6 +130,13 @@
     STAssertEqualObjects(hash, expectedHash, @"SHA-1 hash of '%@' is '%@'", string, expectedHash);
 }
 
+- (void)testMD5 {
+    NSString *string = @"Hello";
+    NSString *expectedHash = @"8b1a9953c4611296a827abf8c47804d7";
+    NSString *hash = [MUK string:string applyingTransform:MUKStringTransformMD5];
+    STAssertEqualObjects(hash, expectedHash, @"MD5 hash of '%@' is '%@'", string, expectedHash);
+}
+
 - (void)testNormalization {
     NSString *string = @"Hello";
     NSString *expected = @"hello";
