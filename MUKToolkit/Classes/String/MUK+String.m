@@ -104,6 +104,13 @@
             break;
         }
             
+        case MUKStringTransformMD5: {
+            NSData *data = [string dataUsingEncoding:NSUTF8StringEncoding];
+            NSData *trasformedData = [MUK data:data applyingTransform:MUKDataTransformMD5];
+            output = [MUK stringHexadecimalRepresentationOfData:trasformedData];
+            break;
+        }
+            
         case MUKStringTransformNormalize: {
             // https://devforums.apple.com/message/363871#363871
             // but using Foundation and not Core Foundation

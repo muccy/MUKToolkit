@@ -42,6 +42,13 @@
             break;
         }
             
+        case MUKDataTransformMD5: {
+            unsigned char hashedChars[CC_MD5_DIGEST_LENGTH];
+            CC_MD5([data bytes], [data length], hashedChars);
+            transformedData = [NSData dataWithBytes:hashedChars length:CC_MD5_DIGEST_LENGTH];
+            break;
+        }
+            
         default:
             break;
     }

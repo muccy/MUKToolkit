@@ -79,4 +79,12 @@
     STAssertEqualObjects(expectedHash, [MUK stringHexadecimalRepresentationOfData:transformedData], @"SHA1 of 'Hello' is '%@'", expectedHash);
 }
 
+- (void)testMD5 {
+    NSData *data = [@"Hello" dataUsingEncoding:NSUTF8StringEncoding];
+    NSString *expectedHash = @"8b1a9953c4611296a827abf8c47804d7";
+    
+    NSData *transformedData = [MUK data:data applyingTransform:MUKDataTransformMD5];
+    STAssertEqualObjects(expectedHash, [MUK stringHexadecimalRepresentationOfData:transformedData], @"MD5 of 'Hello' is '%@'", expectedHash);
+}
+
 @end
