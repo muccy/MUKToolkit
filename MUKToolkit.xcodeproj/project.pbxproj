@@ -63,6 +63,10 @@
 		06D0F79A1529DC050014FE6B /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06D0F7991529DC040014FE6B /* Security.framework */; };
 		06D0F79B1529DC0F0014FE6B /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06D0F7991529DC040014FE6B /* Security.framework */; };
 		06D0F79F1529DCAE0014FE6B /* MUKToolkitDataTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 06D0F79E1529DCAE0014FE6B /* MUKToolkitDataTests.m */; };
+		06F25EA518BD0FC2002CC811 /* MUK+Image.h in Headers */ = {isa = PBXBuildFile; fileRef = 06F25EA318BD0FC2002CC811 /* MUK+Image.h */; };
+		06F25EA618BD0FC2002CC811 /* MUK+Image.m in Sources */ = {isa = PBXBuildFile; fileRef = 06F25EA418BD0FC2002CC811 /* MUK+Image.m */; };
+		06F25EA918BD1833002CC811 /* MUKToolkitImageTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 06F25EA818BD1833002CC811 /* MUKToolkitImageTests.m */; };
+		06F25EAC18BD2A3A002CC811 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06F25EAB18BD2A3A002CC811 /* Accelerate.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -126,6 +130,10 @@
 		06D0F7991529DC040014FE6B /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		06D0F79D1529DCAE0014FE6B /* MUKToolkitDataTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUKToolkitDataTests.h; sourceTree = "<group>"; };
 		06D0F79E1529DCAE0014FE6B /* MUKToolkitDataTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUKToolkitDataTests.m; sourceTree = "<group>"; };
+		06F25EA318BD0FC2002CC811 /* MUK+Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MUK+Image.h"; sourceTree = "<group>"; };
+		06F25EA418BD0FC2002CC811 /* MUK+Image.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MUK+Image.m"; sourceTree = "<group>"; };
+		06F25EA818BD1833002CC811 /* MUKToolkitImageTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUKToolkitImageTests.m; sourceTree = "<group>"; };
+		06F25EAB18BD2A3A002CC811 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +152,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06F25EAC18BD2A3A002CC811 /* Accelerate.framework in Frameworks */,
 				06D0F79B1529DC0F0014FE6B /* Security.framework in Frameworks */,
 				065793991523337F00D6762A /* SenTestingKit.framework in Frameworks */,
 				0610AD0C15261CA700705663 /* CoreGraphics.framework in Frameworks */,
@@ -255,6 +264,7 @@
 		065793891523337F00D6762A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				06F25EAB18BD2A3A002CC811 /* Accelerate.framework */,
 				06D0F7991529DC040014FE6B /* Security.framework */,
 				0610AD0715261C9D00705663 /* CoreGraphics.framework */,
 				0610AD0815261C9D00705663 /* UIKit.framework */,
@@ -274,6 +284,7 @@
 				06D0F7941529DAAE0014FE6B /* Data */,
 				065793F2152466DD00D6762A /* Date */,
 				0610AD591526274500705663 /* Geometry */,
+				06F25EA218BD0FB2002CC811 /* Image */,
 				0610ADAA15263CD900705663 /* Object */,
 				065793DE15233DFA00D6762A /* String */,
 				0610AC931525D9C500705663 /* URL */,
@@ -291,6 +302,7 @@
 				06D0F79C1529DC960014FE6B /* Data */,
 				065793F71524672C00D6762A /* Date */,
 				0610AD5F1526277200705663 /* Geometry */,
+				06F25EA718BD1810002CC811 /* Image */,
 				065793E4152342A800D6762A /* String */,
 				0610AE341526FBF800705663 /* URL */,
 				065793C21523345400D6762A /* InfoPlist.strings */,
@@ -390,6 +402,23 @@
 			path = Data;
 			sourceTree = "<group>";
 		};
+		06F25EA218BD0FB2002CC811 /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				06F25EA318BD0FC2002CC811 /* MUK+Image.h */,
+				06F25EA418BD0FC2002CC811 /* MUK+Image.m */,
+			);
+			path = Image;
+			sourceTree = "<group>";
+		};
+		06F25EA718BD1810002CC811 /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				06F25EA818BD1833002CC811 /* MUKToolkitImageTests.m */,
+			);
+			path = Image;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -401,6 +430,7 @@
 				065793BD1523342500D6762A /* MUKToolkit.h in Headers */,
 				065793CD1523360F00D6762A /* MUK.h in Headers */,
 				065793E115233E1000D6762A /* MUK+String.h in Headers */,
+				06F25EA518BD0FC2002CC811 /* MUK+Image.h in Headers */,
 				065793F5152466EA00D6762A /* MUK+Date.h in Headers */,
 				065793FE1524EDEA00D6762A /* MUK+Array.h in Headers */,
 				0610AC971525D9DA00705663 /* MUK+URL.h in Headers */,
@@ -549,6 +579,7 @@
 				0610ADAF15263CEB00705663 /* MUK+Object.m in Sources */,
 				06D0F7981529DAC30014FE6B /* MUK+Data.m in Sources */,
 				06239FD815B7EADC0073C746 /* MUK+Color.m in Sources */,
+				06F25EA618BD0FC2002CC811 /* MUK+Image.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -558,6 +589,7 @@
 			files = (
 				065793EE1523431100D6762A /* MUKToolkitBaseTests.m in Sources */,
 				065793F11523476B00D6762A /* MUKToolkitStringTests.m in Sources */,
+				06F25EA918BD1833002CC811 /* MUKToolkitImageTests.m in Sources */,
 				065793FA1524674100D6762A /* MUKToolkitDateTests.m in Sources */,
 				065794031524F0CE00D6762A /* MUKToolkitArrayTests.m in Sources */,
 				0610AD621526277200705663 /* MUKToolkitGeometryTests.m in Sources */,

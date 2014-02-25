@@ -8,6 +8,7 @@
 #import <MUKToolkit/MUK+Data.h>
 #import <MUKToolkit/MUK+Date.h>
 #import <MUKToolkit/MUK+Geometry.h>
+#import <MUKToolkit/MUK+Image.h>
 #import <MUKToolkit/MUK+Object.h>
 #import <MUKToolkit/MUK+String.h>
 #import <MUKToolkit/MUK+URL.h>
