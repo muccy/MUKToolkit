@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name      = 'MUKToolkit'
-  s.version   = '1.1.3'
+  s.version   = '1.1.4'
   s.summary   = 'iOS framework which exposes some useful methods.'
   s.license   = 'BSD 3-Clause'
   s.platform  = :ios, '5.0'
