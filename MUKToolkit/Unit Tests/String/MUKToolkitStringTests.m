@@ -42,7 +42,7 @@
         
         STAssertEqualObjects(charString, expectedString, @"Strings must match");
     }];
-    STAssertEquals(firstIndex, 0, @"Enumeration must start from the beginning");
+    STAssertEquals(firstIndex, (NSInteger)0, @"Enumeration must start from the beginning");
     
     firstIndex = -1;
     [MUK string:string enumerateCharactersWithOptions:MUKStringEnumerationBackwards usingBlock:^(unichar c, NSInteger index, BOOL *stop) 

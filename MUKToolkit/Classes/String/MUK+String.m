@@ -169,10 +169,10 @@
     }
     
     if (hours > 0) {
-        [mutString appendFormat:@"%02i:", hours];
+        [mutString appendFormat:@"%02li:", (long)hours];
     }
     
-    [mutString appendFormat:@"%02i:%02i", minutes, seconds];
+    [mutString appendFormat:@"%02li:%02li", (long)minutes, (long)seconds];
     return mutString;
 }
 
