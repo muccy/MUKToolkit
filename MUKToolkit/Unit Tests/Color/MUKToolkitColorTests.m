@@ -94,7 +94,7 @@
     
     UIColor *originalColor = [UIColor colorWithHue:originalHue saturation:originalSaturation brightness:originalBrightness alpha:originalAlpha];
     
-    UIColor *trasformedColor = [MUK color:originalColor withTransformation:^UIColor *(CGFloat hue, CGFloat saturation, CGFloat brightness, CGFloat alpha)
+    UIColor *trasformedColor = [MUK color:originalColor withHSBATransformation:^UIColor *(CGFloat hue, CGFloat saturation, CGFloat brightness, CGFloat alpha)
     {
         STAssertEqualsWithAccuracy(originalHue, hue, 0.0001f, nil);
         STAssertEqualsWithAccuracy(originalSaturation, saturation, 0.0001f, nil);
