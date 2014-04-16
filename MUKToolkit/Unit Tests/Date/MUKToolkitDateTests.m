@@ -78,9 +78,9 @@
     STAssertEquals(components.year, distantComponents.year, @"Years should match");
     STAssertEquals(components.month, distantComponents.month, @"Months should match");
     STAssertEquals(components.day, distantComponents.day, @"Days should match");
-    STAssertEquals(components.hour, 0, @"Hours should be truncated");
-    STAssertEquals(components.minute, 0, @"Months should be truncated");
-    STAssertEquals(components.second, 0, @"Seconds should be truncated");
+    STAssertEquals(components.hour, (NSInteger)0, @"Hours should be truncated");
+    STAssertEquals(components.minute, (NSInteger)0, @"Months should be truncated");
+    STAssertEquals(components.second, (NSInteger)0, @"Seconds should be truncated");
 }
 
 - (void)testComparisons {

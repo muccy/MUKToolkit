@@ -37,14 +37,14 @@
     switch (transform) {
         case MUKDataTransformSHA1: {
             unsigned char hashedChars[CC_SHA1_DIGEST_LENGTH];
-            CC_SHA1([data bytes], [data length], hashedChars);
+            CC_SHA1([data bytes], (CC_LONG)[data length], hashedChars);
             transformedData = [NSData dataWithBytes:hashedChars length:CC_SHA1_DIGEST_LENGTH];
             break;
         }
             
         case MUKDataTransformMD5: {
             unsigned char hashedChars[CC_MD5_DIGEST_LENGTH];
-            CC_MD5([data bytes], [data length], hashedChars);
+            CC_MD5([data bytes], (CC_LONG)[data length], hashedChars);
             transformedData = [NSData dataWithBytes:hashedChars length:CC_MD5_DIGEST_LENGTH];
             break;
         }
