@@ -72,6 +72,6 @@
  @return The color returned by transformationBlock or original sourceColor if
  no transformationBlock is passed.
  */
-+ (UIColor *)color:(UIColor *)sourceColor withTransformation:(UIColor *(^)(CGFloat hue, CGFloat saturation, CGFloat brightness, CGFloat alpha))transformationBlock;
++ (UIColor *)color:(UIColor *)sourceColor withHSBATransformation:(UIColor *(^)(CGFloat hue, CGFloat saturation, CGFloat brightness, CGFloat alpha))transformationBlock;
 
 @end
