@@ -44,4 +44,35 @@
     STAssertEqualsWithAccuracy(alpha, detectedAlpha, 0.001f, nil);
 }
 
+- (void)testHexString {
+    STAssertNoThrow([MUK colorWithHexadecimalString:nil], @"Never throw exceptions");
+    STAssertNoThrow([MUK colorWithHexadecimalString:@"#FF"], @"Never throw exceptions");
+    
+    UIColor *color = [MUK colorWithHexadecimalString:nil];
+    CGFloat detectedRed, detectedGreen, detectedBlue, detectedAlpha;
+    [color getRed:&detectedRed green:&detectedGreen blue:&detectedBlue alpha:&detectedAlpha];
+    STAssertEqualsWithAccuracy((CGFloat)0.0f, detectedAlpha, 0.0001f, @"nil leads to transparent color");
+    
+    color = [MUK colorWithHexadecimalString:@"#ff0000"];
+    STAssertEqualObjects(color, [UIColor redColor], @"Red color");
+    
+    UIColor *color2 = [MUK colorWithHexadecimalString:@"#FF0000"];
+    STAssertEqualObjects(color, color2, @"Case insensitive");
+    
+    color2 = [MUK colorWithHexadecimalString:@"0xFF0000"];
+    STAssertEqualObjects(color, color2, @"Prefix could be 0x");
+    
+    color2 = [MUK colorWithHexadecimalString:@"FF0000"];
+    STAssertEqualObjects(color, color2, @"Prefix could be skipped");
+    
+    color2 = [MUK colorWithHexadecimalString:@"f00"];
+    STAssertEqualObjects(color, color2, @"CSS contract form is allowed");
+    
+    color2 = [MUK colorWithHexadecimalString:@"#FF0000FF"];
+    STAssertEqualObjects(color, color2, @"Alpha is 100% by default");
+    
+    color2 = [MUK colorWithHexadecimalString:@"#FF"];
+    STAssertNil(color2, @"Malformed hex strings lead to nil colors");
+}
+
 @end

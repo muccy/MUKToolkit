@@ -44,4 +44,22 @@
  @return An initialized color.
  */
 + (UIColor *)colorWith8BitRGBAComponents:(NSUInteger)component, ...;
+
+/**
+ Creates a color with a hex string.
+ This method implementation is profoundly derived from great UIColor category
+ at this page: https://github.com/nicklockwood/ColorUtils
+ 
+ ** Examples **
+ 
+    UIColor *color = [MUK colorWithHexadecimalString:@"#ff0000"]; // red
+    color = [MUK colorWithHexadecimalString:@"0xff0000"]; // red
+    color = [MUK colorWithHexadecimalString:@"ff0000"]; // red
+    color = [MUK colorWithHexadecimalString:@"#ff0000ff"]; // red
+    color = [MUK colorWithHexadecimalString:@"#f00"]; // red
+ 
+ @param hexString Hexadecimal string to convert.
+ @return An initialized color or `nil` if hexString is not correctly formed.
+ */
++ (UIColor *)colorWithHexadecimalString:(NSString *)hexString;
 @end

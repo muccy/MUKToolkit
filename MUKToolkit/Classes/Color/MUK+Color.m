@@ -45,4 +45,53 @@
     return [UIColor colorWithRed:(CGFloat)components[0]/255.0f green:(CGFloat)components[1]/255.0f blue:(CGFloat)components[2]/255.0f alpha:alpha];
 }
 
++ (UIColor *)colorWithHexadecimalString:(NSString *)hexString {
+    // Convert to lowercase
+    hexString = [hexString lowercaseString];
+    
+    // Try hex
+    hexString = [hexString stringByReplacingOccurrencesOfString:@"#" withString:@""];
+    hexString = [hexString stringByReplacingOccurrencesOfString:@"0x" withString:@""];
+    
+    switch ([hexString length]) {
+        case 0:
+            hexString = @"00000000";
+            break;
+
+        case 3: {
+            NSString *red = [hexString substringWithRange:NSMakeRange(0, 1)];
+            NSString *green = [hexString substringWithRange:NSMakeRange(1, 1)];
+            NSString *blue = [hexString substringWithRange:NSMakeRange(2, 1)];
+            hexString = [NSString stringWithFormat:@"%1$@%1$@%2$@%2$@%3$@%3$@ff", red, green, blue];
+            break;
+        }
+            
+        case 6:
+            hexString = [hexString stringByAppendingString:@"ff"];
+            break;
+
+        case 8:
+            //do nothing
+            break;
+
+        default:
+            return nil;
+    }
+    
+    // Get RGBA value
+    uint32_t rgba;
+    NSScanner *scanner = [[NSScanner alloc] initWithString:hexString];
+    if (![scanner scanHexInt:&rgba]) {
+        return nil;
+    }
+    
+    // Get components
+    CGFloat red = ((rgba & 0xFF000000) >> 24) / 255.0f;
+    CGFloat green = ((rgba & 0x00FF0000) >> 16) / 255.0f;
+	CGFloat blue = ((rgba & 0x0000FF00) >> 8) / 255.0f;
+	CGFloat alpha = (rgba & 0x000000FF) / 255.0f;
+    
+	return [[UIColor alloc] initWithRed:red green:green blue:blue alpha:alpha];
+}
+
 @end
