@@ -94,7 +94,7 @@
 	return [[UIColor alloc] initWithRed:red green:green blue:blue alpha:alpha];
 }
 
-+ (UIColor *)color:(UIColor *)color withTransformation:(UIColor *(^)(CGFloat hue, CGFloat saturation, CGFloat brightness, CGFloat alpha))transformationBlock
++ (UIColor *)color:(UIColor *)color withHSBATransformation:(UIColor *(^)(CGFloat hue, CGFloat saturation, CGFloat brightness, CGFloat alpha))transformationBlock
 {
     if (!transformationBlock) {
         return color;
