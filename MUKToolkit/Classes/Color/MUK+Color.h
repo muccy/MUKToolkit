@@ -62,4 +62,16 @@
  @return An initialized color or `nil` if hexString is not correctly formed.
  */
 + (UIColor *)colorWithHexadecimalString:(NSString *)hexString;
+
+/**
+ Creates a color trasforming a given one in HSBA space.
+ 
+ @param sourceColor The source color.
+ @param transformationBlock A block which takes original HSBA values (or zeros
+ if values could not be extracted) and returns the modified color.
+ @return The color returned by transformationBlock or original sourceColor if
+ no transformationBlock is passed.
+ */
++ (UIColor *)color:(UIColor *)sourceColor withTransformation:(UIColor *(^)(CGFloat hue, CGFloat saturation, CGFloat brightness, CGFloat alpha))transformationBlock;
+
 @end

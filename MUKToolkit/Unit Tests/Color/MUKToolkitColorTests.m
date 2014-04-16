@@ -75,4 +75,41 @@
     STAssertNil(color2, @"Malformed hex strings lead to nil colors");
 }
 
+- (void)testColorHSBATrasformation {
+    // Warning: setting values to 0.0f may lead to false negatives, because (for
+    // example) when S=0, H doesn't change final color, so -getHue:saturation:brightness:alpha:
+    // will always return H=0
+    
+    CGFloat const originalHue = 0.4f;
+    CGFloat const transformedHue = 0.55f;
+    
+    CGFloat const originalSaturation = 1.0f;
+    CGFloat const transformedSaturation = 0.1f;
+    
+    CGFloat const originalBrightness = 1.0f;
+    CGFloat const transformedBrightness = 0.12f;
+    
+    CGFloat const originalAlpha = 1.0f;
+    CGFloat const transformedAlpha = originalAlpha;
+    
+    UIColor *originalColor = [UIColor colorWithHue:originalHue saturation:originalSaturation brightness:originalBrightness alpha:originalAlpha];
+    
+    UIColor *trasformedColor = [MUK color:originalColor withTransformation:^UIColor *(CGFloat hue, CGFloat saturation, CGFloat brightness, CGFloat alpha)
+    {
+        STAssertEqualsWithAccuracy(originalHue, hue, 0.0001f, nil);
+        STAssertEqualsWithAccuracy(originalSaturation, saturation, 0.0001f, nil);
+        STAssertEqualsWithAccuracy(originalBrightness, brightness, 0.0001f, nil);
+        STAssertEqualsWithAccuracy(originalAlpha, alpha, 0.0001f, nil);
+        
+        return [UIColor colorWithHue:transformedHue saturation:transformedSaturation brightness:transformedBrightness alpha:transformedAlpha];
+    }];
+    
+    CGFloat h, s, b, a;
+    [trasformedColor getHue:&h saturation:&s brightness:&b alpha:&a];
+    STAssertEqualsWithAccuracy(h, transformedHue, 0.0001f, nil);
+    STAssertEqualsWithAccuracy(s, transformedSaturation, 0.0001f, nil);
+    STAssertEqualsWithAccuracy(b, transformedBrightness, 0.0001f, nil);
+    STAssertEqualsWithAccuracy(a, transformedAlpha, 0.0001f, nil);
+}
+
 @end
